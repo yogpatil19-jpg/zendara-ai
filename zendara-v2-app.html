@@ -1,0 +1,2666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Zendara AI — AI Advertising Platform for Lawyers, Dentists & Real Estate Agents</title>
+<meta name="description" content="AI-powered Google Ads and Meta Ads campaigns built specifically for professional services. Generate complete campaigns in minutes. Used by lawyers, dentists and real estate agents across NZ & AUS."/>
+<meta property="og:title" content="Zendara AI — Stop Overpaying for Ad Management"/>
+<meta property="og:description" content="AI builds your Google & Meta campaigns in minutes. Purpose-built for professional services in NZ & AUS."/>
+<meta name="theme-color" content="#080A0F"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --void:#080A0F;--deep:#0D1117;--panel:#121920;--card:#161E28;
+  --border:#1C2530;--border2:#253040;
+  --muted:#7A8799;--body:#B8C4D0;--bright:#EEF2F8;
+  --gold:#C9A84C;--gold2:#E8C97A;--gold3:rgba(201,168,76,.12);
+  --blue:#3B82F6;--blue2:#1D4ED8;--blue3:rgba(59,130,246,.12);
+  --green:#10B981;--green3:rgba(16,185,129,.12);
+  --red:#EF4444;--red3:rgba(239,68,68,.12);
+  --purple:#8B5CF6;--purple3:rgba(139,92,246,.12);
+  --r:12px;--rg:20px;--rx:28px;
+  --shadow:0 4px 24px rgba(0,0,0,.4);
+  --shadow-gold:0 8px 32px rgba(201,168,76,.25);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--void);color:var(--body);font-family:'Inter',sans-serif;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,h5{font-family:'Sora',sans-serif;color:var(--bright);line-height:1.15}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;font-family:inherit;transition:all .18s}
+img{max-width:100%;display:block}
+input,select,textarea{
+  font-family:inherit;font-size:14px;
+  background:var(--card);border:1px solid var(--border);
+  color:var(--bright);border-radius:var(--r);
+  padding:11px 14px;width:100%;outline:none;
+  transition:border-color .18s,box-shadow .18s;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.12)}
+select option{background:var(--deep)}
+textarea{resize:vertical;min-height:80px}
+.hidden{display:none!important}
+
+/* ── UTILITY ── */
+.container{max-width:1120px;margin:0 auto;padding:0 24px}
+.flex{display:flex}.gap8{gap:8px}.gap12{gap:12px}.gap16{gap:16px}.gap20{gap:20px}
+.center{text-align:center}.ac{align-items:center}.jb{justify-content:space-between}.jc{justify-content:center}
+.fw{flex-wrap:wrap}
+.w100{width:100%}
+
+/* ── BUTTONS ── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:10px 22px;border-radius:var(--r);font-weight:600;font-size:14px;
+  transition:all .18s;white-space:nowrap;letter-spacing:.01em;
+}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--void);font-weight:700}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-gold)}
+.btn-primary:active{transform:translateY(0)}
+.btn-outline{background:transparent;color:var(--gold);border:1.5px solid var(--gold)}
+.btn-outline:hover{background:var(--gold);color:var(--void)}
+.btn-ghost{background:transparent;color:var(--muted)}
+.btn-ghost:hover{color:var(--bright)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue2);transform:translateY(-2px)}
+.btn-green{background:var(--green);color:#fff}
+.btn-green:hover{filter:brightness(1.1)}
+.btn-red{background:var(--red);color:#fff}
+.btn-danger{background:var(--red3);color:var(--red);border:1px solid rgba(239,68,68,.3)}
+.btn-lg{padding:14px 32px;font-size:16px;border-radius:16px}
+.btn-sm{padding:7px 14px;font-size:13px}
+.btn-full{width:100%}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
+
+/* ── NAV ── */
+#landing{overflow-x:hidden}
+nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(8,10,15,.88);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);padding:14px 0;
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:'Sora',sans-serif;font-weight:800;font-size:21px;color:var(--bright);letter-spacing:-.4px;cursor:pointer}
+.logo span{color:var(--gold)}
+.logo sub{font-size:10px;color:var(--muted);font-weight:400;vertical-align:middle;margin-left:4px;letter-spacing:.06em;text-transform:uppercase}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-link{padding:8px 14px;border-radius:10px;font-size:14px;color:var(--muted);font-weight:500;cursor:pointer;transition:all .15s}
+.nav-link:hover{color:var(--bright);background:rgba(255,255,255,.05)}
+
+/* ── HERO ── */
+.hero{padding:100px 0 72px;text-align:center;position:relative}
+.hero::before{
+  content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);
+  width:1000px;height:700px;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 30%,rgba(201,168,76,.07) 0%,transparent 68%);
+}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.22);
+  color:var(--gold2);font-size:12px;font-weight:600;
+  letter-spacing:.07em;text-transform:uppercase;
+  padding:6px 18px;border-radius:100px;margin-bottom:32px;
+}
+.badge-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:blink 2.2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+h1.hero-title{font-size:clamp(38px,6.5vw,76px);font-weight:800;letter-spacing:-2.5px;margin-bottom:24px;line-height:1.06}
+h1.hero-title em{font-style:normal;color:var(--gold)}
+.hero-sub{font-size:clamp(16px,2.2vw,20px);color:var(--muted);max-width:620px;margin:0 auto 40px;line-height:1.75}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.trust-row{display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+.trust-item{display:flex;align-items:center;gap:7px}
+.trust-icon{color:var(--green);font-size:13px}
+
+/* ── PLATFORM MOCK ── */
+.mock-wrap{margin:56px 0 0;position:relative}
+.mock-glow{
+  position:absolute;inset:-40px;border-radius:40px;
+  background:radial-gradient(ellipse at 50% 50%,rgba(201,168,76,.08),transparent 70%);
+  pointer-events:none;
+}
+.mock-browser{
+  background:var(--deep);border:1px solid var(--border);
+  border-radius:var(--rg);overflow:hidden;
+  box-shadow:0 32px 80px rgba(0,0,0,.6);
+}
+.mock-bar{
+  background:var(--panel);padding:14px 20px;
+  display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);
+}
+.dot{width:11px;height:11px;border-radius:50%}
+.dot-r{background:#FF5F57}.dot-y{background:#FEBC2E}.dot-g{background:#28C840}
+.mock-url{
+  flex:1;text-align:center;background:rgba(0,0,0,.3);
+  border-radius:7px;padding:5px 14px;font-size:12px;color:var(--muted);
+}
+.mock-body{padding:28px;display:grid;grid-template-columns:200px 1fr;gap:20px}
+.mock-sidebar{display:flex;flex-direction:column;gap:6px}
+.mock-nav-item{
+  display:flex;align-items:center;gap:10px;padding:9px 12px;
+  border-radius:9px;font-size:13px;color:var(--muted);
+}
+.mock-nav-item.active{background:var(--gold3);color:var(--gold)}
+.mock-main{display:flex;flex-direction:column;gap:16px}
+.mock-stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.mock-stat{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);padding:14px}
+.mock-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px}
+.mock-stat-val{font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--bright)}
+.mock-stat-change{font-size:11px;color:var(--green);margin-top:3px}
+.mock-chart-area{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);padding:16px}
+.mock-bars{display:flex;align-items:flex-end;gap:5px;height:52px;margin-top:10px}
+.mock-bar-col{flex:1;background:var(--border);border-radius:4px;position:relative;overflow:hidden}
+.mock-bar-fill{position:absolute;bottom:0;left:0;right:0;border-radius:4px}
+.mock-bar-g{background:linear-gradient(180deg,var(--gold2),var(--gold))}
+.mock-bar-b{background:linear-gradient(180deg,#60A5FA,var(--blue))}
+.mock-quality{
+  background:var(--panel);border:1px solid var(--border);border-radius:var(--r);
+  padding:14px;display:flex;align-items:center;gap:12px;
+}
+.quality-ring{
+  width:44px;height:44px;border-radius:50%;flex-shrink:0;
+  background:conic-gradient(var(--green) 85%, var(--border) 0);
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:var(--bright);
+}
+
+/* ── LOGO STRIP ── */
+.logo-strip{padding:40px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.logo-strip-inner{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+.strip-logo{font-size:13px;font-weight:600;color:var(--muted);opacity:.7;letter-spacing:.04em}
+
+/* ── SECTION SHARED ── */
+section{padding:88px 0}
+.section-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);font-weight:600;margin-bottom:14px}
+.section-title{font-size:clamp(28px,4vw,46px);font-weight:700;letter-spacing:-1.2px;margin-bottom:18px}
+.section-sub{color:var(--muted);max-width:580px;line-height:1.75;font-size:15px}
+.section-center .section-sub{margin:0 auto}
+
+/* ── COMPARISON ── */
+.compare-table{width:100%;border-collapse:collapse;margin-top:48px}
+.compare-table th{
+  padding:14px 20px;text-align:left;font-size:12px;
+  text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600;
+  border-bottom:1px solid var(--border);
+}
+.compare-table th:first-child{width:260px}
+.compare-table td{padding:14px 20px;border-bottom:1px solid var(--border);font-size:14px;color:var(--body);vertical-align:middle}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table .hl{background:rgba(201,168,76,.05)}
+.compare-table .hl td{color:var(--bright)}
+.check-y{color:var(--green);font-size:16px}
+.check-n{color:var(--red);font-size:16px}
+.check-p{color:var(--gold);font-size:13px}
+
+/* ── FEATURES ── */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:52px}
+.feat-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--rg);padding:28px;
+  transition:border-color .2s,transform .2s;
+}
+.feat-card:hover{border-color:rgba(201,168,76,.35);transform:translateY(-3px)}
+.feat-icon{
+  width:50px;height:50px;border-radius:14px;
+  background:var(--gold3);border:1px solid rgba(201,168,76,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;margin-bottom:18px;
+}
+.feat-icon.blue{background:var(--blue3);border-color:rgba(59,130,246,.2)}
+.feat-icon.green{background:var(--green3);border-color:rgba(16,185,129,.2)}
+.feat-icon.purple{background:var(--purple3);border-color:rgba(139,92,246,.2)}
+.feat-title{font-size:17px;font-weight:600;color:var(--bright);margin-bottom:8px}
+.feat-desc{font-size:14px;color:var(--muted);line-height:1.75}
+.feat-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.feat-tag{background:var(--panel);color:var(--muted);font-size:11px;padding:3px 10px;border-radius:100px;border:1px solid var(--border)}
+
+/* ── HOW IT WORKS ── */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:52px}
+.step{text-align:center;position:relative}
+.step::after{
+  content:'→';position:absolute;top:22px;right:-18px;
+  color:var(--border2);font-size:20px;
+}
+.step:last-child::after{display:none}
+.step-num{
+  width:52px;height:52px;border-radius:50%;margin:0 auto 18px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--void);font-family:'Sora',sans-serif;font-weight:800;font-size:20px;
+  display:flex;align-items:center;justify-content:center;
+}
+.step-title{font-size:16px;font-weight:600;color:var(--bright);margin-bottom:8px}
+.step-desc{font-size:14px;color:var(--muted);line-height:1.7}
+
+/* ── INTEGRATION SECTION ── */
+.integration-block{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--rg);padding:32px;margin-top:48px;
+}
+.integration-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.int-platform{display:flex;flex-direction:column;gap:16px}
+.int-header{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+.int-logo{
+  width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;font-weight:700;
+}
+.int-logo.google{background:linear-gradient(135deg,#4285F4,#34A853)}
+.int-logo.meta{background:linear-gradient(135deg,#0866FF,#1877F2)}
+.int-title{font-size:16px;font-weight:600;color:var(--bright)}
+.int-sub{font-size:13px;color:var(--muted)}
+.int-step{
+  display:flex;align-items:flex-start;gap:12px;
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:var(--r);padding:14px 16px;
+}
+.int-step-num{
+  width:24px;height:24px;border-radius:50%;background:var(--gold3);
+  color:var(--gold);font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;
+}
+.int-step-text{font-size:14px;color:var(--body);line-height:1.6}
+.int-step-text strong{color:var(--bright)}
+.int-step-link{
+  display:inline-flex;align-items:center;gap:5px;
+  margin-top:6px;font-size:12px;color:var(--blue);font-weight:500;
+  text-decoration:underline;cursor:pointer;
+}
+
+/* ── PRICING ── */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+.price-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--rg);padding:32px;position:relative;
+  transition:all .2s;
+}
+.price-card:hover{transform:translateY(-3px)}
+.price-card.featured{
+  border-color:var(--gold);
+  background:linear-gradient(135deg,rgba(201,168,76,.06),var(--card));
+}
+.price-pill{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--void);font-size:11px;font-weight:700;
+  padding:4px 18px;border-radius:100px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;
+}
+.price-name{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px}
+.price-amount{
+  font-family:'Sora',sans-serif;font-size:52px;font-weight:800;
+  color:var(--bright);line-height:1;display:flex;align-items:flex-start;gap:2px;
+}
+.price-cur{font-size:22px;margin-top:10px;color:var(--muted)}
+.price-period{font-size:13px;color:var(--muted);margin-bottom:28px;margin-top:6px}
+.price-divider{height:1px;background:var(--border);margin:24px 0}
+.price-list{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px}
+.price-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--body)}
+.price-list li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:2px}
+.price-list li.na{color:var(--muted)}
+.price-list li.na::before{content:'–';color:var(--border2)}
+.price-note{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+
+/* ── TESTIMONIALS ── */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+.testi-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--rg);padding:28px;position:relative;
+}
+.testi-quote{
+  position:absolute;top:22px;right:24px;
+  font-size:36px;color:var(--gold3);font-family:'Sora',sans-serif;line-height:1;
+}
+.testi-stars{color:var(--gold);font-size:13px;letter-spacing:2px;margin-bottom:14px}
+.testi-text{font-size:15px;color:var(--body);line-height:1.75;margin-bottom:20px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-av{
+  width:42px;height:42px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--gold),var(--blue));
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:15px;color:var(--void);
+}
+.testi-name{font-size:14px;font-weight:600;color:var(--bright)}
+.testi-role{font-size:12px;color:var(--muted)}
+
+/* ── FAQ ── */
+.faq-list{max-width:760px;margin:48px auto 0;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.faq-q{
+  width:100%;text-align:left;padding:18px 22px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:15px;font-weight:600;color:var(--bright);
+  background:none;cursor:pointer;gap:16px;
+}
+.faq-q:hover{background:rgba(255,255,255,.02)}
+.faq-chevron{color:var(--muted);transition:transform .2s;flex-shrink:0;font-size:12px}
+.faq-item.open .faq-chevron{transform:rotate(180deg)}
+.faq-a{
+  max-height:0;overflow:hidden;transition:max-height .3s ease;
+  font-size:14px;color:var(--muted);line-height:1.8;
+}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a-inner{padding:0 22px 18px}
+
+/* ── CTA BAND ── */
+.cta-band{
+  background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(59,130,246,.06));
+  border:1px solid rgba(201,168,76,.2);border-radius:var(--rx);
+  padding:72px 48px;text-align:center;
+}
+
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--border);padding:48px 0 32px;
+}
+.footer-grid{display:grid;grid-template-columns:280px 1fr;gap:48px;margin-bottom:40px}
+.footer-brand p{font-size:14px;color:var(--muted);line-height:1.7;margin-top:12px;max-width:240px}
+.footer-links{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.footer-col-title{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;margin-bottom:14px}
+.footer-link{display:block;font-size:14px;color:var(--muted);padding:4px 0;transition:color .15s}
+.footer-link:hover{color:var(--bright)}
+.footer-bottom{
+  padding-top:24px;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  font-size:13px;color:var(--muted);
+}
+
+/* ── AUTH MODAL ── */
+.overlay{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(8,10,15,.92);backdrop-filter:blur(12px);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+}
+.modal{
+  background:var(--deep);border:1px solid var(--border);
+  border-radius:var(--rg);padding:44px;
+  width:100%;max-width:440px;position:relative;
+}
+.modal-logo{margin-bottom:28px}
+.modal-title{font-size:26px;font-weight:700;margin-bottom:6px}
+.modal-sub{font-size:14px;color:var(--muted);margin-bottom:28px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-group{margin-bottom:16px}
+.form-label{font-size:13px;font-weight:500;color:var(--bright);margin-bottom:6px;display:flex;align-items:center;justify-content:space-between}
+.form-hint{font-size:12px;color:var(--muted);margin-top:5px}
+.form-hint a{color:var(--blue);cursor:pointer}
+.form-hint a:hover{text-decoration:underline}
+.msg{border-radius:10px;padding:11px 16px;font-size:13px;margin-bottom:16px;display:flex;align-items:flex-start;gap:9px}
+.msg-error{background:var(--red3);border:1px solid rgba(239,68,68,.25);color:#FCA5A5}
+.msg-success{background:var(--green3);border:1px solid rgba(16,185,129,.25);color:#6EE7B7}
+.modal-switch{text-align:center;margin-top:18px;font-size:14px;color:var(--muted)}
+.modal-switch span{color:var(--gold);cursor:pointer;font-weight:600}
+.modal-switch span:hover{text-decoration:underline}
+
+/* ── APP SHELL ── */
+#app{display:none;min-height:100vh;background:var(--void)}
+.app-layout{display:flex;min-height:100vh}
+
+/* Sidebar */
+.sidebar{
+  width:248px;flex-shrink:0;
+  background:var(--deep);border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
+  position:sticky;top:0;height:100vh;overflow-y:auto;
+}
+.sb-logo{padding:22px 20px 20px;border-bottom:1px solid var(--border)}
+.sb-nav{padding:14px 10px;flex:1;display:flex;flex-direction:column;gap:3px}
+.sb-section{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600;padding:10px 12px 4px;margin-top:4px}
+.nav-btn{
+  display:flex;align-items:center;gap:11px;
+  padding:10px 12px;border-radius:10px;
+  font-size:14px;color:var(--muted);
+  cursor:pointer;transition:all .15s;border:none;
+  background:none;width:100%;text-align:left;
+}
+.nav-btn:hover{background:rgba(255,255,255,.04);color:var(--bright)}
+.nav-btn.active{background:var(--gold3);color:var(--gold)}
+.nav-btn .ni{font-size:15px;width:20px;text-align:center;flex-shrink:0}
+.nav-btn .nb{font-size:11px;padding:2px 7px;border-radius:100px;margin-left:auto}
+.nb-new{background:var(--gold3);color:var(--gold)}
+.sb-footer{padding:14px 10px;border-top:1px solid var(--border)}
+.user-chip{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;border-radius:10px;background:var(--panel);
+}
+.u-av{
+  width:34px;height:34px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:14px;color:var(--void);
+}
+.u-name{font-size:13px;font-weight:600;color:var(--bright)}
+.u-plan{font-size:11px;color:var(--muted)}
+
+/* Topbar */
+.main-area{flex:1;overflow:hidden;display:flex;flex-direction:column;min-height:100vh}
+.topbar{
+  background:var(--deep);border-bottom:1px solid var(--border);
+  padding:16px 28px;display:flex;align-items:center;justify-content:space-between;
+  flex-shrink:0;
+}
+.topbar-left{display:flex;align-items:center;gap:12px}
+.topbar-title{font-family:'Sora',sans-serif;font-size:18px;font-weight:600;color:var(--bright)}
+.topbar-right{display:flex;align-items:center;gap:10px}
+.trial-badge{
+  background:var(--gold3);border:1px solid rgba(201,168,76,.2);
+  color:var(--gold2);font-size:12px;font-weight:600;padding:5px 12px;border-radius:100px;
+}
+
+/* Content */
+.content{padding:28px;flex:1;overflow-y:auto}
+.page{display:none}
+.page.active{display:block}
+
+/* ── DASHBOARD ── */
+.dash-welcome{
+  background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(59,130,246,.04));
+  border:1px solid rgba(201,168,76,.18);border-radius:var(--rg);
+  padding:28px;margin-bottom:24px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+}
+.dash-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.stat-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--rg);padding:20px;
+}
+.stat-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.stat-val{font-family:'Sora',sans-serif;font-size:32px;font-weight:700;color:var(--bright)}
+.stat-change{font-size:12px;margin-top:5px}
+.up{color:var(--green)}.dn{color:var(--red)}.neu{color:var(--muted)}
+.dash-grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+.checklist{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--rg);padding:24px;
+}
+.checklist h3{font-size:16px;margin-bottom:16px}
+.check-item{
+  display:flex;align-items:flex-start;gap:11px;
+  padding:11px 0;border-bottom:1px solid var(--border);font-size:14px;
+}
+.check-item:last-child{border-bottom:none}
+.check-circle{
+  width:22px;height:22px;border-radius:50%;border:2px solid var(--border2);
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:11px;margin-top:1px;transition:all .2s;
+}
+.check-circle.done{background:var(--green);border-color:var(--green);color:#fff}
+.check-text{color:var(--muted);flex:1}
+.check-text.done{color:var(--body);text-decoration:line-through;opacity:.6}
+.tips-panel{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--rg);padding:24px;
+}
+.tips-panel h3{font-size:15px;margin-bottom:16px}
+.tip-item{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:var(--r);padding:12px 14px;margin-bottom:10px;
+  font-size:13px;color:var(--body);line-height:1.6;
+}
+.tip-item strong{color:var(--gold);display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+
+/* ── GENERATOR PAGES ── */
+.gen-header{margin-bottom:24px}
+.gen-header h2{font-size:22px;margin-bottom:6px}
+.gen-header p{font-size:14px;color:var(--muted)}
+.gen-form{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--rg);padding:28px;
+}
+.gen-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.gen-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.section-divider{
+  display:flex;align-items:center;gap:12px;
+  margin:20px 0 16px;font-size:12px;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--muted);font-weight:600;
+}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.gen-actions{display:flex;align-items:center;gap:12px;margin-top:24px;flex-wrap:wrap}
+
+/* Quality score widget */
+.quality-widget{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:var(--r);padding:8px 16px;font-size:13px;color:var(--muted);
+}
+.q-dot{width:8px;height:8px;border-radius:50%}
+.q-green{background:var(--green)}.q-amber{background:#F59E0B}.q-red{background:var(--red)}
+
+/* Output panel */
+.output-panel{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--rg);padding:28px;margin-top:24px;
+}
+.output-topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:24px;flex-wrap:wrap;gap:12px;
+}
+.output-title{font-size:17px;font-weight:600;color:var(--bright)}
+.output-actions{display:flex;gap:8px}
+
+/* Score ring */
+.score-header{
+  display:flex;align-items:center;gap:20px;
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:var(--r);padding:20px;margin-bottom:20px;
+}
+.score-ring-wrap{flex-shrink:0}
+.score-ring{
+  width:72px;height:72px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:var(--bright);
+}
+.score-info h4{font-size:16px;margin-bottom:6px}
+.score-reasons{display:flex;flex-direction:column;gap:4px}
+.score-reason{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:7px}
+.score-reason::before{content:'•';color:var(--gold)}
+
+/* Output sections */
+.out-section{margin-bottom:24px}
+.out-section-title{
+  font-size:11px;text-transform:uppercase;letter-spacing:.09em;
+  color:var(--gold);font-weight:600;margin-bottom:10px;
+  padding-bottom:8px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:8px;
+}
+.out-item{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:var(--r);padding:13px 16px;margin-bottom:8px;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+}
+.out-item-body{flex:1;font-size:14px;color:var(--body);line-height:1.65}
+.out-item-meta{font-size:11px;color:var(--muted);margin-top:4px;display:flex;gap:10px;flex-wrap:wrap}
+.meta-tag{
+  background:var(--border);color:var(--muted);
+  padding:2px 8px;border-radius:4px;font-size:11px;
+}
+.meta-tag.high{background:var(--green3);color:var(--green)}
+.meta-tag.med{background:rgba(245,158,11,.1);color:#F59E0B}
+.meta-tag.low{background:var(--red3);color:var(--red)}
+.meta-tag.exact{background:var(--blue3);color:var(--blue)}
+.meta-tag.phrase{background:var(--purple3);color:var(--purple)}
+.copy-btn{
+  background:var(--border);color:var(--muted);border:none;
+  padding:5px 11px;border-radius:7px;font-size:11px;cursor:pointer;
+  flex-shrink:0;transition:all .15s;font-weight:500;
+}
+.copy-btn:hover{background:var(--gold);color:var(--void)}
+.char-bar{display:flex;align-items:center;gap:8px;margin-top:6px}
+.char-track{flex:1;height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.char-fill{height:100%;border-radius:2px;background:var(--green);transition:width .3s}
+.char-fill.warn{background:#F59E0B}
+.char-fill.over{background:var(--red)}
+.char-text{font-size:11px;color:var(--muted);white-space:nowrap}
+
+/* Ad preview */
+.ad-preview-card{
+  border:1px solid var(--border2);border-radius:var(--r);
+  overflow:hidden;margin-bottom:16px;
+}
+.ad-preview-header{
+  background:var(--panel);padding:10px 14px;
+  display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);
+}
+.ad-preview-icon{font-size:14px}
+.ad-preview-label{font-size:12px;font-weight:600;color:var(--bright)}
+.ad-preview-body{padding:16px}
+.g-ad-url{font-size:12px;color:var(--green);margin-bottom:4px}
+.g-ad-title{font-size:16px;color:var(--blue);font-weight:600;margin-bottom:4px;line-height:1.4}
+.g-ad-desc{font-size:13px;color:var(--body);line-height:1.6}
+.g-ad-ext{font-size:12px;color:var(--muted);margin-top:8px;display:flex;gap:10px;flex-wrap:wrap}
+.g-ad-ext span{display:flex;align-items:center;gap:4px}
+.fb-ad-wrap{background:var(--panel);border-radius:10px;overflow:hidden;max-width:380px;margin:0 auto}
+.fb-ad-header{padding:14px;display:flex;align-items:center;gap:10px}
+.fb-ad-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--blue));flex-shrink:0}
+.fb-ad-name{font-size:13px;font-weight:600;color:var(--bright)}
+.fb-ad-sponsored{font-size:11px;color:var(--muted)}
+.fb-ad-text{padding:0 14px 12px;font-size:14px;color:var(--body);line-height:1.6}
+.fb-ad-img{height:180px;background:linear-gradient(135deg,var(--border),var(--panel));display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px}
+.fb-ad-cta{padding:12px 14px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.03);border-top:1px solid var(--border)}
+.fb-ad-hl{font-size:14px;font-weight:600;color:var(--bright)}
+.fb-ad-btn{background:var(--blue);color:#fff;padding:7px 16px;border-radius:7px;font-size:13px;font-weight:600;border:none;cursor:pointer}
+
+/* Loading */
+.loading-wrap{
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;padding:72px 20px;gap:18px;
+}
+.spinner{
+  width:44px;height:44px;border:3px solid var(--border);
+  border-top-color:var(--gold);border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+.spinner.blue{border-top-color:var(--blue)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-label{font-size:14px;color:var(--muted)}
+.loading-step{font-size:14px;font-weight:600;color:var(--gold)}
+.loading-step.blue{color:var(--blue)}
+.loading-progress{width:280px;height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.loading-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px;animation:loadbar 8s ease-in-out forwards}
+@keyframes loadbar{from{width:0}to{width:95%}}
+
+/* Integration guide in app */
+.int-guide{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--rg);overflow:hidden;margin-top:24px;
+}
+.int-guide-tabs{
+  display:flex;border-bottom:1px solid var(--border);
+  background:var(--panel);
+}
+.int-tab{
+  flex:1;padding:14px;text-align:center;font-size:14px;
+  font-weight:500;color:var(--muted);cursor:pointer;
+  border:none;background:none;transition:all .15s;
+  border-bottom:2px solid transparent;
+}
+.int-tab.active{color:var(--bright);border-bottom-color:var(--gold)}
+.int-guide-content{padding:28px}
+.guide-step{
+  display:flex;align-items:flex-start;gap:16px;
+  padding:16px 0;border-bottom:1px solid var(--border);
+}
+.guide-step:last-child{border-bottom:none}
+.guide-step-num{
+  width:32px;height:32px;border-radius:50%;flex-shrink:0;
+  background:var(--gold3);color:var(--gold);
+  font-weight:700;font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+}
+.guide-step-num.blue{background:var(--blue3);color:var(--blue)}
+.guide-step-body{flex:1}
+.guide-step-title{font-size:15px;font-weight:600;color:var(--bright);margin-bottom:4px}
+.guide-step-desc{font-size:14px;color:var(--muted);line-height:1.7}
+.guide-step-link{
+  display:inline-flex;align-items:center;gap:5px;
+  margin-top:8px;color:var(--blue);font-size:13px;font-weight:500;
+}
+.guide-step-link:hover{text-decoration:underline;cursor:pointer}
+.guide-cta{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:var(--r);padding:16px;margin-top:20px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+
+/* Saved campaigns */
+.camp-list{display:flex;flex-direction:column;gap:10px}
+.camp-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);padding:18px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+.camp-card:hover{border-color:var(--border2)}
+.camp-name{font-size:14px;font-weight:600;color:var(--bright)}
+.camp-meta{font-size:12px;color:var(--muted);margin-top:3px}
+.camp-badges{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.cbadge{padding:4px 12px;border-radius:100px;font-size:11px;font-weight:600}
+.cbadge-g{background:var(--blue3);color:var(--blue)}
+.cbadge-m{background:var(--purple3);color:var(--purple)}
+.cbadge-ok{background:var(--green3);color:var(--green)}
+.camp-actions{display:flex;gap:8px}
+
+/* Settings */
+.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.settings-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--rg);padding:28px;
+}
+.settings-card h3{font-size:16px;margin-bottom:6px}
+.settings-card p{font-size:14px;color:var(--muted);margin-bottom:20px}
+
+/* Toast */
+.toast{
+  position:fixed;bottom:28px;right:28px;z-index:999;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);padding:14px 20px;
+  font-size:14px;color:var(--bright);
+  box-shadow:var(--shadow);
+  transform:translateY(120px);opacity:0;
+  transition:all .3s cubic-bezier(.34,1.56,.64,1);
+  max-width:340px;display:flex;align-items:center;gap:10px;
+}
+.toast.show{transform:translateY(0);opacity:1}
+.toast-s{border-color:rgba(16,185,129,.35)}
+.toast-e{border-color:rgba(239,68,68,.35)}
+.toast-i{border-color:rgba(59,130,246,.35)}
+
+/* Strategy page */
+.strategy-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--rg);padding:24px;margin-bottom:16px;
+}
+.strategy-month{
+  display:flex;align-items:center;gap:12px;margin-bottom:16px;
+}
+.month-num{
+  width:40px;height:40px;border-radius:10px;flex-shrink:0;
+  background:var(--gold3);color:var(--gold);font-weight:700;
+  display:flex;align-items:center;justify-content:center;font-size:14px;
+}
+.month-num.m2{background:var(--blue3);color:var(--blue)}
+.month-num.m3{background:var(--green3);color:var(--green)}
+.kpi-list{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.kpi-tag{background:var(--panel);border:1px solid var(--border);color:var(--body);font-size:12px;padding:4px 11px;border-radius:6px}
+
+/* Responsive */
+@media(max-width:900px){
+  .sidebar{display:none}
+  .pricing-grid,.testi-grid,.steps-grid{grid-template-columns:1fr}
+  .dash-grid,.settings-grid,.integration-grid,.footer-grid,.form-row,.gen-grid,.gen-grid-3{grid-template-columns:1fr}
+  .dash-stats,.mock-stat-row{grid-template-columns:1fr 1fr}
+  .mock-body{grid-template-columns:1fr}
+  .mock-sidebar{display:none}
+  .compare-table{font-size:13px}
+  .compare-table th:first-child{width:160px}
+  .steps-grid{grid-template-columns:1fr 1fr}
+  .step::after{display:none}
+  .footer-links{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .dash-stats,.mock-stat-row{grid-template-columns:1fr}
+  .hero{padding:64px 0 40px}
+  .cta-band{padding:44px 24px}
+  .pricing-grid{grid-template-columns:1fr}
+  .steps-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     LANDING PAGE
+═══════════════════════════════════════════ -->
+<div id="landing">
+
+<nav>
+  <div class="container nav-inner">
+    <div class="logo" onclick="window.scrollTo(0,0)">Zendara<span> AI</span><sub>Beta</sub></div>
+    <div class="nav-links">
+      <span class="nav-link" onclick="smoothScroll('#features')">Features</span>
+      <span class="nav-link" onclick="smoothScroll('#compare')">Compare</span>
+      <span class="nav-link" onclick="smoothScroll('#integration')">Integration</span>
+      <span class="nav-link" onclick="smoothScroll('#pricing')">Pricing</span>
+      <button class="btn btn-ghost btn-sm" onclick="openAuth('login')">Sign In</button>
+      <button class="btn btn-primary btn-sm" onclick="openAuth('signup')">Start Free Trial →</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="badge"><span class="badge-dot"></span> NZ & AUS — AI Advertising Platform</div>
+    <h1 class="hero-title">
+      The AI Advertising Team<br/>
+      for <em>Lawyers, Dentists</em><br/>
+      &amp; Real Estate Agents
+    </h1>
+    <p class="hero-sub">Stop overpaying agencies. Zendara AI generates complete Google Ads and Meta campaigns in minutes — then walks you step-by-step through going live. No jargon. No guesswork.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary btn-lg" onclick="openAuth('signup')">✦ Start Free 14-Day Trial</button>
+      <button class="btn btn-outline btn-lg" onclick="smoothScroll('#how-it-works')">See How It Works</button>
+    </div>
+    <div class="trust-row">
+      <div class="trust-item"><span class="trust-icon">✓</span> No credit card required</div>
+      <div class="trust-item"><span class="trust-icon">✓</span> Setup in under 10 minutes</div>
+      <div class="trust-item"><span class="trust-icon">✓</span> Cancel anytime</div>
+      <div class="trust-item"><span class="trust-icon">✓</span> Google & Meta compliant</div>
+      <div class="trust-item"><span class="trust-icon">✓</span> NZ & AUS market data</div>
+    </div>
+
+    <!-- Mock Browser -->
+    <div class="mock-wrap">
+      <div class="mock-glow"></div>
+      <div class="mock-browser">
+        <div class="mock-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <div class="mock-url">app.zendara.ai/dashboard — Campaign Intelligence</div>
+        </div>
+        <div class="mock-body">
+          <div class="mock-sidebar">
+            <div class="mock-nav-item active">📊 Dashboard</div>
+            <div class="mock-nav-item">🎯 Google Ads AI</div>
+            <div class="mock-nav-item">📘 Meta Ads AI</div>
+            <div class="mock-nav-item">🗺 Strategy</div>
+            <div class="mock-nav-item">📁 Campaigns</div>
+          </div>
+          <div class="mock-main">
+            <div class="mock-stat-row">
+              <div class="mock-stat">
+                <div class="mock-stat-label">Leads Generated</div>
+                <div class="mock-stat-val">147</div>
+                <div class="mock-stat-change">↑ 91% vs last month</div>
+              </div>
+              <div class="mock-stat">
+                <div class="mock-stat-label">Cost Per Lead</div>
+                <div class="mock-stat-val">$38</div>
+                <div class="mock-stat-change">↓ 44% reduction</div>
+              </div>
+              <div class="mock-stat">
+                <div class="mock-stat-label">Ad Spend Saved</div>
+                <div class="mock-stat-val">$2.8K</div>
+                <div class="mock-stat-change">vs agency fees</div>
+              </div>
+              <div class="mock-stat">
+                <div class="mock-stat-label">Campaign Score</div>
+                <div class="mock-stat-val">9.2</div>
+                <div class="mock-stat-change">↑ Excellent</div>
+              </div>
+            </div>
+            <div class="mock-chart-area">
+              <div style="font-size:12px;color:var(--muted);font-weight:600">Weekly Lead Volume — Google + Meta</div>
+              <div class="mock-bars">
+                <div class="mock-bar-col" style="height:100%"><div class="mock-bar-fill mock-bar-g" style="height:38%"></div></div>
+                <div class="mock-bar-col" style="height:100%"><div class="mock-bar-fill mock-bar-g" style="height:52%"></div></div>
+                <div class="mock-bar-col" style="height:100%"><div class="mock-bar-fill mock-bar-g" style="height:44%"></div></div>
+                <div class="mock-bar-col" style="height:100%"><div class="mock-bar-fill mock-bar-g" style="height:68%"></div></div>
+                <div class="mock-bar-col" style="height:100%"><div class="mock-bar-fill mock-bar-g" style="height:75%"></div></div>
+                <div class="mock-bar-col" style="height:100%"><div class="mock-bar-fill mock-bar-g" style="height:90%"></div></div>
+                <div class="mock-bar-col" style="height:100%"><div class="mock-bar-fill mock-bar-g" style="height:100%"></div></div>
+                <div class="mock-bar-col" style="height:100%"><div class="mock-bar-fill mock-bar-b" style="height:35%"></div></div>
+                <div class="mock-bar-col" style="height:100%"><div class="mock-bar-fill mock-bar-b" style="height:55%"></div></div>
+                <div class="mock-bar-col" style="height:100%"><div class="mock-bar-fill mock-bar-b" style="height:48%"></div></div>
+                <div class="mock-bar-col" style="height:100%"><div class="mock-bar-fill mock-bar-b" style="height:70%"></div></div>
+                <div class="mock-bar-col" style="height:100%"><div class="mock-bar-fill mock-bar-b" style="height:85%"></div></div>
+                <div class="mock-bar-col" style="height:100%"><div class="mock-bar-fill mock-bar-b" style="height:92%"></div></div>
+              </div>
+            </div>
+            <div class="mock-quality">
+              <div class="quality-ring" style="background:conic-gradient(var(--green) 92%,var(--border) 0)">9.2</div>
+              <div>
+                <div style="font-size:13px;font-weight:600;color:var(--bright)">AI Campaign Quality Score</div>
+                <div style="font-size:12px;color:var(--green);margin-top:3px">✓ Headlines optimised · ✓ Keywords matched · ✓ Budget efficient</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO STRIP -->
+<div class="logo-strip">
+  <div class="container">
+    <div class="logo-strip-inner">
+      <div class="strip-logo">TRUSTED BY PROFESSIONALS ACROSS</div>
+      <div class="strip-logo">🏛 LAW FIRMS</div>
+      <div class="strip-logo">🦷 DENTAL PRACTICES</div>
+      <div class="strip-logo">🏠 REAL ESTATE AGENCIES</div>
+      <div class="strip-logo">💊 MEDICAL CLINICS</div>
+      <div class="strip-logo">⚖️ IMMIGRATION LAWYERS</div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARE -->
+<section id="compare" style="background:var(--deep);border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="section-label">Competitive Comparison</div>
+    <h2 class="section-title">Why Professionals Choose<br/>Zendara Over Agencies</h2>
+    <p class="section-sub">We compared Zendara AI to hiring a digital agency, using GoHighLevel yourself, or managing ads manually.</p>
+    <div style="overflow-x:auto;margin-top:0">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th style="color:var(--gold)">Zendara AI</th>
+            <th>Digital Agency</th>
+            <th>GoHighLevel</th>
+            <th>DIY (Manual)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="hl">
+            <td><strong>Monthly Cost (NZD)</strong></td>
+            <td style="color:var(--gold);font-weight:700">$197–$797</td>
+            <td>$1,500–$5,000+</td>
+            <td>$130–$550</td>
+            <td>$0 (but 20+ hrs/mo)</td>
+          </tr>
+          <tr>
+            <td>AI Campaign Generation</td>
+            <td><span class="check-y">✓</span> Full AI</td>
+            <td><span class="check-n">✗</span> Human</td>
+            <td><span class="check-p">Partial</span></td>
+            <td><span class="check-n">✗</span></td>
+          </tr>
+          <tr>
+            <td>Google Ads (complete)</td>
+            <td><span class="check-y">✓</span></td>
+            <td><span class="check-y">✓</span></td>
+            <td><span class="check-p">Basic</span></td>
+            <td><span class="check-y">✓</span> Manual</td>
+          </tr>
+          <tr>
+            <td>Meta Ads (complete)</td>
+            <td><span class="check-y">✓</span></td>
+            <td><span class="check-y">✓</span></td>
+            <td><span class="check-p">Basic</span></td>
+            <td><span class="check-y">✓</span> Manual</td>
+          </tr>
+          <tr>
+            <td>Step-by-Step Launch Guide</td>
+            <td><span class="check-y">✓</span> Built-in</td>
+            <td><span class="check-n">✗</span> Black box</td>
+            <td><span class="check-n">✗</span></td>
+            <td><span class="check-n">✗</span></td>
+          </tr>
+          <tr>
+            <td>Campaign Quality Score (AI)</td>
+            <td><span class="check-y">✓</span></td>
+            <td><span class="check-n">✗</span></td>
+            <td><span class="check-n">✗</span></td>
+            <td><span class="check-n">✗</span></td>
+          </tr>
+          <tr>
+            <td>Industry-specific NZ copy</td>
+            <td><span class="check-y">✓</span></td>
+            <td><span class="check-p">Varies</span></td>
+            <td><span class="check-n">✗</span></td>
+            <td><span class="check-n">✗</span></td>
+          </tr>
+          <tr>
+            <td>90-Day Strategy Builder</td>
+            <td><span class="check-y">✓</span></td>
+            <td><span class="check-p">Extra cost</span></td>
+            <td><span class="check-n">✗</span></td>
+            <td><span class="check-n">✗</span></td>
+          </tr>
+          <tr>
+            <td>Time to first campaign</td>
+            <td style="color:var(--green);font-weight:600">8 minutes</td>
+            <td>1–2 weeks</td>
+            <td>4–8 hrs setup</td>
+            <td>Days of learning</td>
+          </tr>
+          <tr>
+            <td>White-label for agencies</td>
+            <td><span class="check-y">✓</span> Agency plan</td>
+            <td>N/A</td>
+            <td><span class="check-y">✓</span></td>
+            <td><span class="check-n">✗</span></td>
+          </tr>
+          <tr>
+            <td>Ownership of campaigns</td>
+            <td><span class="check-y">✓</span> Full ownership</td>
+            <td><span class="check-n">✗</span> Agency owns</td>
+            <td><span class="check-y">✓</span></td>
+            <td><span class="check-y">✓</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="section-label">Platform Capabilities</div>
+    <h2 class="section-title">Everything You Need to<br/>Dominate Local Search</h2>
+    <p class="section-sub">Built specifically for professional services — not a generic marketing tool retrofitted for your industry.</p>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-icon">🎯</div>
+        <div class="feat-title">AI Google Ads Generator</div>
+        <div class="feat-desc">Complete campaigns including 15 headlines, 4 descriptions, 20 keywords, negative keywords, sitelinks, callouts, and structured snippets — all character-count verified and policy compliant.</div>
+        <div class="feat-tags"><span class="feat-tag">Quality Score</span><span class="feat-tag">Ad Groups</span><span class="feat-tag">Budget Forecast</span></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon blue">📘</div>
+        <div class="feat-title">AI Meta Ads Generator</div>
+        <div class="feat-desc">Facebook and Instagram campaigns with 3 ad variations using different psychological angles, audience targeting, retargeting strategy, lead forms, and creative briefs for your design team.</div>
+        <div class="feat-tags"><span class="feat-tag">3 Copy Angles</span><span class="feat-tag">Lead Forms</span><span class="feat-tag">Lookalike Audiences</span></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon green">🗺</div>
+        <div class="feat-title">90-Day Strategy Builder</div>
+        <div class="feat-desc">AI builds your full 3-month advertising roadmap — budget split between Google and Meta, monthly KPI targets, task checklist, risk flags, and break-even analysis.</div>
+        <div class="feat-tags"><span class="feat-tag">Budget Split</span><span class="feat-tag">KPI Targets</span><span class="feat-tag">Risk Analysis</span></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📊</div>
+        <div class="feat-title">Campaign Quality Scoring</div>
+        <div class="feat-desc">Every generated campaign receives an AI quality score from 1–10 with specific improvement reasons — so you know exactly how strong your campaign is before spending a dollar.</div>
+        <div class="feat-tags"><span class="feat-tag">1–10 Score</span><span class="feat-tag">Improvement Tips</span><span class="feat-tag">Benchmark</span></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon blue">🚀</div>
+        <div class="feat-title">Step-by-Step Launch Guides</div>
+        <div class="feat-desc">After generating your campaign, Zendara walks you through every step to publish it in Google Ads Manager or Meta Business Suite — with exact button names, screenshots guidance, and direct links.</div>
+        <div class="feat-tags"><span class="feat-tag">Google Ads</span><span class="feat-tag">Meta Business</span><span class="feat-tag">No Agency Needed</span></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon purple">🔐</div>
+        <div class="feat-title">Secure & Compliant</div>
+        <div class="feat-desc">Your API keys never leave our secure servers. All campaigns are pre-checked against Google Ads and Meta's professional services policies. GDPR-ready, NZ Privacy Act compliant.</div>
+        <div class="feat-tags"><span class="feat-tag">Policy Checked</span><span class="feat-tag">Secure API</span><span class="feat-tag">NZ Compliant</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" style="background:var(--deep);border-top:1px solid var(--border)">
+  <div class="container section-center">
+    <div class="section-label">Simple Process</div>
+    <h2 class="section-title">From Zero to Live Campaign<br/>in Under 10 Minutes</h2>
+    <div class="steps-grid" style="margin-top:52px">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Describe Your Business</div>
+        <div class="step-desc">Tell Zendara your profession, city, budget, and target clients. Takes 2 minutes. No technical knowledge required.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">AI Builds Your Campaign</div>
+        <div class="step-desc">Our AI generates a complete, scored campaign — headlines, keywords, audiences, copy — in under 60 seconds.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Review & Customise</div>
+        <div class="step-desc">Review every element. Edit anything inline. Regenerate individual sections. Copy to clipboard with one click.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">Launch with Guidance</div>
+        <div class="step-desc">Follow Zendara's step-by-step guide to publish directly into Google Ads or Meta Business Suite — no agency required.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATION SECTION (landing) -->
+<section id="integration">
+  <div class="container">
+    <div class="section-label">Direct Platform Integration</div>
+    <h2 class="section-title">Goes Live in Google Ads<br/>&amp; Meta — Not Just a Doc</h2>
+    <p class="section-sub">Other tools generate a Word document and leave you guessing. Zendara gives you a step-by-step walkthrough to publish directly into the platforms that matter.</p>
+
+    <div class="integration-block">
+      <div class="integration-grid">
+        <!-- Google -->
+        <div class="int-platform">
+          <div class="int-header">
+            <div class="int-logo google">G</div>
+            <div>
+              <div class="int-title">Google Ads</div>
+              <div class="int-sub">Search Campaigns · Shopping · Display</div>
+            </div>
+          </div>
+          <div class="int-step">
+            <div class="int-step-num">1</div>
+            <div class="int-step-text"><strong>Create Campaign in Google Ads</strong><br/>Zendara links directly to <span class="int-step-link" onclick="openLink('https://ads.google.com')">ads.google.com ↗</span> and tells you exactly which buttons to click.</div>
+          </div>
+          <div class="int-step">
+            <div class="int-step-num">2</div>
+            <div class="int-step-text"><strong>Paste Headlines & Descriptions</strong><br/>Copy each asset from Zendara. Character counts are pre-verified so nothing gets rejected.</div>
+          </div>
+          <div class="int-step">
+            <div class="int-step-num">3</div>
+            <div class="int-step-text"><strong>Add Keywords & Negatives</strong><br/>Zendara's keyword list is formatted for direct paste into Google Ads Editor or the web interface.</div>
+          </div>
+          <div class="int-step">
+            <div class="int-step-num">4</div>
+            <div class="int-step-text"><strong>Set Budget & Go Live</strong><br/>Zendara tells you the exact daily budget to enter, bidding strategy to select, and schedule to set.</div>
+          </div>
+        </div>
+        <!-- Meta -->
+        <div class="int-platform">
+          <div class="int-header">
+            <div class="int-logo meta">f</div>
+            <div>
+              <div class="int-title">Meta Ads Manager</div>
+              <div class="int-sub">Facebook · Instagram · Reels · Stories</div>
+            </div>
+          </div>
+          <div class="int-step">
+            <div class="int-step-num">1</div>
+            <div class="int-step-text"><strong>Open Meta Ads Manager</strong><br/>Zendara links to <span class="int-step-link" onclick="openLink('https://adsmanager.facebook.com')">Meta Ads Manager ↗</span> and guides you through creating your first campaign.</div>
+          </div>
+          <div class="int-step">
+            <div class="int-step-num">2</div>
+            <div class="int-step-text"><strong>Set Up Audience Targeting</strong><br/>Zendara's audience spec tells you every interest, demographic, and exclusion to enter — line by line.</div>
+          </div>
+          <div class="int-step">
+            <div class="int-step-num">3</div>
+            <div class="int-step-text"><strong>Upload Creative & Copy</strong><br/>Paste primary text, headline, and description. The creative brief tells your designer (or Canva) exactly what image to make.</div>
+          </div>
+          <div class="int-step">
+            <div class="int-step-num">4</div>
+            <div class="int-step-text"><strong>Publish & Set Retargeting</strong><br/>Zendara guides you through the retargeting audience setup so warm visitors see follow-up ads automatically.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background:var(--deep);border-top:1px solid var(--border)">
+  <div class="container section-center">
+    <div class="section-label">Early Adopters</div>
+    <h2 class="section-title">Professionals Getting Results</h2>
+    <p class="section-sub">Illustrative results based on the platform's capabilities for NZ & AUS professional services.</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">I was paying a digital agency $3,800/month and had no visibility into what they were doing. Zendara generated a better campaign in 8 minutes and I now know exactly what every dollar is doing.</div>
+        <div class="testi-author">
+          <div class="testi-av">SK</div>
+          <div><div class="testi-name">Sarah K.</div><div class="testi-role">Family Law Attorney · Auckland</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">The quality score told me my old Google Ads were a 4/10. Zendara rebuilt them to 9.2. My cost per new patient appointment dropped from $210 to $68 in the first month.</div>
+        <div class="testi-author">
+          <div class="testi-av">MP</div>
+          <div><div class="testi-name">Dr. Marcus P.</div><div class="testi-role">Cosmetic Dentist · Wellington</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">The step-by-step Google Ads guide is what made the difference. I'd been too intimidated to run ads myself. Zendara made it feel manageable — I was live in under an hour.</div>
+        <div class="testi-author">
+          <div class="testi-av">JL</div>
+          <div><div class="testi-name">James L.</div><div class="testi-role">Real Estate Agent · Christchurch</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container section-center">
+    <div class="section-label">Straightforward Pricing</div>
+    <h2 class="section-title">Pay Less Than One Hour<br/>of an Agency's Time</h2>
+    <p class="section-sub">All plans include a 14-day free trial. No credit card required. Cancel anytime from your dashboard.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Starter</div>
+        <div class="price-amount"><span class="price-cur">$</span>197</div>
+        <div class="price-period">NZD / month</div>
+        <button class="btn btn-outline btn-full" onclick="openAuth('signup')">Start Free Trial</button>
+        <div class="price-divider"></div>
+        <ul class="price-list">
+          <li>1 business profile</li>
+          <li>AI Google Ads Generator (5/mo)</li>
+          <li>AI Meta Ads Generator (5/mo)</li>
+          <li>Campaign Quality Scoring</li>
+          <li>Step-by-step launch guides</li>
+          <li>Keyword research tool</li>
+          <li class="na">90-Day Strategy Builder</li>
+          <li class="na">Saved campaign history</li>
+          <li class="na">White-label</li>
+        </ul>
+        <div class="price-note">Ideal for solo practitioners</div>
+      </div>
+      <div class="price-card featured">
+        <div class="price-pill">Most Popular</div>
+        <div class="price-name">Growth</div>
+        <div class="price-amount"><span class="price-cur">$</span>397</div>
+        <div class="price-period">NZD / month</div>
+        <button class="btn btn-primary btn-full" onclick="openAuth('signup')">Start Free Trial →</button>
+        <div class="price-divider"></div>
+        <ul class="price-list">
+          <li>3 business profiles</li>
+          <li>Unlimited campaign generation</li>
+          <li>Google Ads + Meta Ads AI</li>
+          <li>Campaign Quality Scoring</li>
+          <li>Step-by-step launch guides</li>
+          <li>90-Day Strategy Builder</li>
+          <li>Saved campaign history</li>
+          <li>Weekly AI performance tips</li>
+          <li>Priority support</li>
+          <li class="na">White-label</li>
+        </ul>
+        <div class="price-note">Best for growing practices</div>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Agency</div>
+        <div class="price-amount"><span class="price-cur">$</span>797</div>
+        <div class="price-period">NZD / month</div>
+        <button class="btn btn-outline btn-full" onclick="openAuth('signup')">Start Free Trial</button>
+        <div class="price-divider"></div>
+        <ul class="price-list">
+          <li>Up to 15 client businesses</li>
+          <li>Unlimited campaign generation</li>
+          <li>Google Ads + Meta Ads AI</li>
+          <li>90-Day Strategy Builder</li>
+          <li>White-label branding</li>
+          <li>Client reporting dashboard</li>
+          <li>Priority + phone support</li>
+          <li>Custom onboarding session</li>
+          <li>Early access to new features</li>
+        </ul>
+        <div class="price-note">For marketing agencies & consultants</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--deep);border-top:1px solid var(--border)">
+  <div class="container section-center">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Common Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do I need a Google Ads or Meta Ads account first? <span class="faq-chevron">▼</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes, but setting one up is free and takes about 10 minutes. Zendara's launch guide walks you through creating your Google Ads account and Meta Business Suite account from scratch if you don't already have them. You do not need existing campaigns.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Does Zendara spend my ad budget for me? <span class="faq-chevron">▼</span></button>
+        <div class="faq-a"><div class="faq-a-inner">No. Zendara generates the campaign content and guides you to publish it yourself inside Google Ads and Meta Ads Manager. You retain 100% control of your ad spend — it goes directly from your account to Google or Meta, not through Zendara. This means no agency markup on your spend.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How is this different from using ChatGPT or another AI? <span class="faq-chevron">▼</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Generic AI tools give you text. Zendara gives you a complete, structured campaign with correct character counts, keyword match types, audience targeting specs, quality scoring, and a step-by-step guide to go live. It's purpose-built for professional services in NZ and AUS — not a general writing tool.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Are the campaigns Google and Meta policy compliant? <span class="faq-chevron">▼</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Zendara's AI is trained to avoid policy violations specific to professional services — no unverifiable claims, no prohibited language for legal or health services, and correct character limits for all text assets. Every campaign includes compliance notes. However, you should always review before publishing, as policies can change.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I use this if I already have an agency? <span class="faq-chevron">▼</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Absolutely. Many clients use Zendara to audit their agency's work, generate alternative campaigns to compare, or simply understand what a good campaign should look like. The Agency plan also lets you generate campaigns for your own clients if you are a marketing consultant or agency owner.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section>
+  <div class="container">
+    <div class="cta-band">
+      <div class="badge" style="margin:0 auto 24px">✦ Limited Beta Pricing — Locked In Forever</div>
+      <h2 class="section-title">Ready to Slash Your Ad Management Costs?</h2>
+      <p class="section-sub" style="margin:16px auto 36px">Join professionals across New Zealand and Australia generating more leads from Google and Meta — for a fraction of what agencies charge.</p>
+      <button class="btn btn-primary btn-lg" onclick="openAuth('signup')">✦ Start Your Free 14-Day Trial</button>
+      <p style="margin-top:16px;font-size:13px;color:var(--muted)">No credit card · Cancel anytime · Setup in 10 minutes</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Zendara<span> AI</span></div>
+        <p>AI-powered Google Ads and Meta Ads campaigns built specifically for professional services in New Zealand and Australia.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <div class="footer-col-title">Platform</div>
+          <a class="footer-link" onclick="smoothScroll('#features')">Features</a>
+          <a class="footer-link" onclick="smoothScroll('#pricing')">Pricing</a>
+          <a class="footer-link" onclick="smoothScroll('#integration')">Integration</a>
+          <a class="footer-link" onclick="smoothScroll('#compare')">Compare</a>
+        </div>
+        <div>
+          <div class="footer-col-title">For</div>
+          <a class="footer-link" href="#">Lawyers & Law Firms</a>
+          <a class="footer-link" href="#">Dental Practices</a>
+          <a class="footer-link" href="#">Real Estate Agents</a>
+          <a class="footer-link" href="#">Marketing Agencies</a>
+        </div>
+        <div>
+          <div class="footer-col-title">Company</div>
+          <a class="footer-link" href="#">About</a>
+          <a class="footer-link" href="#">Privacy Policy</a>
+          <a class="footer-link" href="#">Terms of Service</a>
+          <a class="footer-link" href="mailto:hello@zendara.ai">Contact Us</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 Zendara AI. All rights reserved.</div>
+      <div style="display:flex;gap:20px">
+        <a class="footer-link" href="#">Privacy</a>
+        <a class="footer-link" href="#">Terms</a>
+        <a class="footer-link" href="mailto:hello@zendara.ai">hello@zendara.ai</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</div><!-- end #landing -->
+
+
+<!-- ═══════════════════════════════════════════
+     AUTH MODAL
+═══════════════════════════════════════════ -->
+<div class="overlay hidden" id="auth-overlay">
+  <div class="modal">
+    <div id="form-login">
+      <div class="modal-logo"><div class="logo">Zendara<span> AI</span></div></div>
+      <div class="modal-title">Welcome back</div>
+      <div class="modal-sub">Sign in to your account to continue</div>
+      <div class="msg msg-error hidden" id="login-err"></div>
+      <div class="form-group">
+        <label class="form-label">Email address</label>
+        <input type="email" id="l-email" placeholder="you@lawfirm.co.nz"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" id="l-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')handleLogin()"/>
+      </div>
+      <button class="btn btn-primary btn-full" id="login-btn" onclick="handleLogin()">Sign In →</button>
+      <div class="modal-switch">No account? <span onclick="switchAuth('signup')">Start free 14-day trial</span></div>
+      <div style="text-align:center;margin-top:10px"><button class="btn btn-ghost btn-sm" onclick="closeAuth()">← Back</button></div>
+    </div>
+    <div id="form-signup" class="hidden">
+      <div class="modal-logo"><div class="logo">Zendara<span> AI</span></div></div>
+      <div class="modal-title">Create your account</div>
+      <div class="modal-sub">14-day free trial. No credit card required.</div>
+      <div class="msg msg-error hidden" id="su-err"></div>
+      <div class="msg msg-success hidden" id="su-ok"></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">First name</label><input type="text" id="su-fname" placeholder="Sarah"/></div>
+        <div class="form-group"><label class="form-label">Last name</label><input type="text" id="su-lname" placeholder="Kim"/></div>
+      </div>
+      <div class="form-group"><label class="form-label">Work email</label><input type="email" id="su-email" placeholder="you@practice.co.nz"/></div>
+      <div class="form-group">
+        <label class="form-label">Profession</label>
+        <select id="su-profession">
+          <option value="">Select your profession...</option>
+          <option>Family Law Attorney</option><option>Criminal Defence Lawyer</option>
+          <option>Immigration Lawyer</option><option>Personal Injury Lawyer</option>
+          <option>Commercial Lawyer</option><option>General Dental Practice</option>
+          <option>Orthodontist</option><option>Cosmetic Dentist</option>
+          <option>Real Estate Agent</option><option>Mortgage Broker</option>
+          <option>Marketing Agency</option><option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Password</label><input type="password" id="su-pass" placeholder="Minimum 8 characters" onkeydown="if(event.key==='Enter')handleSignup()"/></div>
+      <button class="btn btn-primary btn-full" id="signup-btn" onclick="handleSignup()">Create Account & Start Trial →</button>
+      <div class="modal-switch">Already have an account? <span onclick="switchAuth('login')">Sign in</span></div>
+      <div style="text-align:center;margin-top:10px"><button class="btn btn-ghost btn-sm" onclick="closeAuth()">← Back</button></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     APP DASHBOARD
+═══════════════════════════════════════════ -->
+<div id="app">
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-logo"><div class="logo">Zendara<span> AI</span></div></div>
+    <nav class="sb-nav">
+      <div class="sb-section">Overview</div>
+      <button class="nav-btn active" onclick="showPage('dashboard',this)"><span class="ni">📊</span> Dashboard</button>
+
+      <div class="sb-section">Generate</div>
+      <button class="nav-btn" onclick="showPage('google',this)"><span class="ni">🎯</span> Google Ads AI</button>
+      <button class="nav-btn" onclick="showPage('meta',this)"><span class="ni">📘</span> Meta Ads AI</button>
+      <button class="nav-btn" onclick="showPage('strategy',this)"><span class="ni">🗺</span> 90-Day Strategy <span class="nb nb-new">NEW</span></button>
+
+      <div class="sb-section">Manage</div>
+      <button class="nav-btn" onclick="showPage('campaigns',this)"><span class="ni">📁</span> Saved Campaigns</button>
+      <button class="nav-btn" onclick="showPage('launch',this)"><span class="ni">🚀</span> Launch Guides</button>
+
+      <div class="sb-section">Account</div>
+      <button class="nav-btn" onclick="showPage('settings',this)"><span class="ni">⚙️</span> Settings</button>
+    </nav>
+    <div class="sb-footer">
+      <div class="user-chip">
+        <div class="u-av" id="sb-av">U</div>
+        <div><div class="u-name" id="sb-name">User</div><div class="u-plan">Starter · Trial</div></div>
+      </div>
+      <button class="nav-btn" style="margin-top:8px;color:var(--red)" onclick="handleLogout()"><span class="ni">🚪</span> Sign Out</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-area">
+    <div class="topbar">
+      <div class="topbar-left">
+        <div class="topbar-title" id="page-title">Dashboard</div>
+      </div>
+      <div class="topbar-right">
+        <div class="trial-badge">14-day trial active</div>
+        <button class="btn btn-primary btn-sm" onclick="showToast('Upgrade feature coming soon — email hello@zendara.ai','i')">Upgrade Plan</button>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ─── DASHBOARD ─── -->
+      <div class="page active" id="page-dashboard">
+        <div class="dash-welcome">
+          <div>
+            <h2 style="font-size:22px;margin-bottom:6px">Good to see you, <span id="welcome-name">there</span> 👋</h2>
+            <p style="font-size:14px;color:var(--muted)">Generate your first AI campaign below — it takes under 10 minutes.</p>
+          </div>
+          <div class="flex gap12 fw">
+            <button class="btn btn-primary btn-sm" onclick="showPage('google',document.querySelector('[onclick*=\"google\"]'))">🎯 Google Ads</button>
+            <button class="btn btn-blue btn-sm" onclick="showPage('meta',document.querySelectorAll('[onclick*=\"meta\"]')[0])">📘 Meta Ads</button>
+            <button class="btn btn-sm" style="background:var(--panel);color:var(--body);border:1px solid var(--border)" onclick="showPage('strategy',document.querySelector('[onclick*=\"strategy\"]'))">🗺 Strategy</button>
+          </div>
+        </div>
+        <div class="dash-stats">
+          <div class="stat-card"><div class="stat-label">Total Campaigns</div><div class="stat-val" id="ds-total">0</div><div class="stat-change neu">Generated by AI</div></div>
+          <div class="stat-card"><div class="stat-label">Google Ads</div><div class="stat-val" id="ds-google">0</div><div class="stat-change up">Ready to launch</div></div>
+          <div class="stat-card"><div class="stat-label">Meta Ads</div><div class="stat-val" id="ds-meta">0</div><div class="stat-change up">Ready to launch</div></div>
+          <div class="stat-card"><div class="stat-label">Avg Quality Score</div><div class="stat-val" id="ds-score">—</div><div class="stat-change neu">Out of 10</div></div>
+        </div>
+        <div class="dash-grid">
+          <div class="checklist">
+            <h3>Quick Start Checklist</h3>
+            <div class="check-item" id="ck1"><div class="check-circle done" id="ck1c">✓</div><div class="check-text done" id="ck1t">Account created &amp; dashboard active</div></div>
+            <div class="check-item" id="ck2"><div class="check-circle" id="ck2c"></div><div class="check-text" id="ck2t">Generate first Google Ads campaign</div></div>
+            <div class="check-item" id="ck3"><div class="check-circle" id="ck3c"></div><div class="check-text" id="ck3t">Generate first Meta Ads campaign</div></div>
+            <div class="check-item"><div class="check-circle"></div><div class="check-text">Follow launch guide to go live on Google</div></div>
+            <div class="check-item"><div class="check-circle"></div><div class="check-text">Follow launch guide to go live on Meta</div></div>
+            <div class="check-item"><div class="check-circle"></div><div class="check-text">Build your 90-day strategy</div></div>
+          </div>
+          <div class="tips-panel">
+            <h3>💡 Pro Tips</h3>
+            <div class="tip-item"><strong>Google Ads</strong>Start with Exact Match keywords only. Broad match burns budget fast for professional services.</div>
+            <div class="tip-item"><strong>Meta Ads</strong>Run the "Pain" angle ad first. It typically outperforms "Authority" angles by 2–3x in professional services.</div>
+            <div class="tip-item"><strong>Budget</strong>Spend at least $30/day on Google Ads to get meaningful data within 7 days. Below that, results are too slow to optimise.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── GOOGLE ADS ─── -->
+      <div class="page" id="page-google">
+        <div class="gen-header">
+          <h2>🎯 AI Google Ads Generator</h2>
+          <p>Fill in your business details. AI generates a complete, scored Search campaign ready to copy into Google Ads.</p>
+        </div>
+        <div class="gen-form">
+          <div class="gen-grid">
+            <div class="form-group"><label class="form-label">Your Profession *</label>
+              <select id="g-prof">
+                <option value="">Select profession...</option>
+                <option>Family Law Attorney</option><option>Criminal Defence Lawyer</option>
+                <option>Immigration Lawyer</option><option>Personal Injury Lawyer</option>
+                <option>Commercial & Business Lawyer</option><option>General Dental Practice</option>
+                <option>Orthodontist</option><option>Cosmetic Dentist</option>
+                <option>Dental Implant Specialist</option><option>Periodontist</option>
+                <option>Real Estate Agent — Residential</option><option>Real Estate Agent — Commercial</option>
+                <option>Property Manager</option><option>Mortgage Broker</option>
+                <option>Medical GP / Clinic</option><option>Physiotherapist</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">City / Region *</label>
+              <input type="text" id="g-city" placeholder="e.g. Auckland, Wellington, Sydney"/>
+            </div>
+            <div class="form-group"><label class="form-label">Monthly Ad Budget (NZD) *</label>
+              <input type="number" id="g-budget" placeholder="e.g. 1500" min="300"/>
+              <div class="form-hint">Recommended minimum: $600/mo for meaningful results</div>
+            </div>
+            <div class="form-group"><label class="form-label">Target Client Description</label>
+              <input type="text" id="g-target" placeholder="e.g. families going through separation, first-time home buyers"/>
+            </div>
+            <div class="form-group"><label class="form-label">Main Service or Offer</label>
+              <input type="text" id="g-service" placeholder="e.g. free 30-min consultation, same-day appointments"/>
+            </div>
+            <div class="form-group"><label class="form-label">Years in Business</label>
+              <select id="g-years"><option>Less than 1 year</option><option>1–3 years</option><option selected>3–10 years</option><option>10+ years</option></select>
+            </div>
+          </div>
+          <div class="section-divider">Additional Details (improves quality score)</div>
+          <div class="gen-grid">
+            <div class="form-group"><label class="form-label">Known Competitor (optional)</label>
+              <input type="text" id="g-comp" placeholder="e.g. Smith & Partners Law, City Dental"/>
+              <div class="form-hint">Helps AI position your campaign effectively</div>
+            </div>
+            <div class="form-group"><label class="form-label">Unique Selling Points</label>
+              <input type="text" id="g-usp" placeholder="e.g. 98% case success rate, ACC registered"/>
+            </div>
+          </div>
+          <div class="gen-actions">
+            <button class="btn btn-primary btn-lg" onclick="runGoogleGen()" id="g-btn">🎯 Generate Google Ads Campaign</button>
+            <div class="quality-widget" id="g-qw" style="display:none">
+              <div class="q-dot" id="g-qd"></div>
+              <span id="g-ql">Score loading...</span>
+            </div>
+          </div>
+        </div>
+        <div id="g-out" class="hidden">
+          <div class="loading-wrap" id="g-load">
+            <div class="spinner"></div>
+            <div class="loading-label" id="g-lstep">Analysing your profession and location...</div>
+            <div class="loading-progress"><div class="loading-bar"></div></div>
+          </div>
+          <div id="g-result" class="hidden"></div>
+        </div>
+      </div>
+
+      <!-- ─── META ADS ─── -->
+      <div class="page" id="page-meta">
+        <div class="gen-header">
+          <h2>📘 AI Meta Ads Generator</h2>
+          <p>Generate Facebook and Instagram campaigns with 3 copy variations, audience targeting, and creative briefs.</p>
+        </div>
+        <div class="gen-form">
+          <div style="display:flex;gap:6px;background:var(--panel);border-radius:var(--r);padding:5px;margin-bottom:20px">
+            <button class="tab-btn active" id="tb-fb" onclick="setMetaTab('fb',this)">📘 Facebook</button>
+            <button class="tab-btn" id="tb-ig" onclick="setMetaTab('ig',this)">📸 Instagram</button>
+            <button class="tab-btn" id="tb-both" onclick="setMetaTab('both',this)">🚀 Both Platforms</button>
+          </div>
+          <input type="hidden" id="m-plat" value="Facebook Ads"/>
+          <div class="gen-grid">
+            <div class="form-group"><label class="form-label">Your Profession *</label>
+              <select id="m-prof">
+                <option value="">Select profession...</option>
+                <option>Family Law Attorney</option><option>Criminal Defence Lawyer</option>
+                <option>Immigration Lawyer</option><option>General Dental Practice</option>
+                <option>Orthodontist</option><option>Cosmetic Dentist</option>
+                <option>Real Estate Agent — Residential</option><option>Mortgage Broker</option>
+                <option>Medical GP / Clinic</option><option>Physiotherapist</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">City / Region *</label>
+              <input type="text" id="m-city" placeholder="e.g. Auckland, Wellington"/>
+            </div>
+            <div class="form-group"><label class="form-label">Campaign Objective</label>
+              <select id="m-obj"><option>Lead Generation</option><option>Website Traffic</option><option>Appointment Bookings</option><option>Brand Awareness</option><option>Phone Calls</option></select>
+            </div>
+            <div class="form-group"><label class="form-label">Monthly Budget (NZD)</label>
+              <input type="number" id="m-budget" placeholder="e.g. 800" min="200"/>
+            </div>
+            <div class="form-group"><label class="form-label">Target Age Range</label>
+              <select id="m-age"><option>25–45</option><option>30–55</option><option selected>35–65</option><option>All adults 18+</option></select>
+            </div>
+            <div class="form-group"><label class="form-label">Special Offer / Hook</label>
+              <input type="text" id="m-offer" placeholder="e.g. Free consultation, No upfront fees"/>
+            </div>
+          </div>
+          <div class="form-group"><label class="form-label">What problem do you solve for clients?</label>
+            <textarea id="m-prob" placeholder="e.g. Help families through difficult divorces while protecting their assets and ensuring fair custody arrangements..."></textarea>
+          </div>
+          <div class="gen-actions">
+            <button class="btn btn-blue btn-lg" onclick="runMetaGen()" id="m-btn">📘 Generate Meta Ads Campaign</button>
+          </div>
+        </div>
+        <div id="m-out" class="hidden">
+          <div class="loading-wrap" id="m-load">
+            <div class="spinner blue"></div>
+            <div class="loading-label" id="m-lstep">Analysing your audience...</div>
+            <div class="loading-progress"><div class="loading-bar" style="background:linear-gradient(90deg,var(--blue),#60A5FA)"></div></div>
+          </div>
+          <div id="m-result" class="hidden"></div>
+        </div>
+      </div>
+
+      <!-- ─── STRATEGY ─── -->
+      <div class="page" id="page-strategy">
+        <div class="gen-header">
+          <h2>🗺 90-Day Strategy Builder</h2>
+          <p>AI builds your complete advertising roadmap — budget split, monthly KPIs, tasks, and break-even analysis.</p>
+        </div>
+        <div class="gen-form">
+          <div class="gen-grid-3">
+            <div class="form-group"><label class="form-label">Profession *</label>
+              <input type="text" id="s-prof" placeholder="e.g. Family Law Attorney"/>
+            </div>
+            <div class="form-group"><label class="form-label">City *</label>
+              <input type="text" id="s-city" placeholder="e.g. Auckland"/>
+            </div>
+            <div class="form-group"><label class="form-label">Total Monthly Budget (NZD) *</label>
+              <input type="number" id="s-budget" placeholder="e.g. 2000"/>
+            </div>
+          </div>
+          <div class="form-group"><label class="form-label">Business Goals</label>
+            <textarea id="s-goals" placeholder="e.g. Double new client enquiries in 90 days, build brand awareness in Auckland CBD, reduce cost per lead below $80..."></textarea>
+          </div>
+          <button class="btn btn-primary btn-lg" onclick="runStrategyGen()" id="s-btn">🗺 Build My 90-Day Strategy</button>
+        </div>
+        <div id="s-out" class="hidden">
+          <div class="loading-wrap" id="s-load">
+            <div class="spinner"></div>
+            <div class="loading-label">Building your 90-day roadmap...</div>
+            <div class="loading-progress"><div class="loading-bar"></div></div>
+          </div>
+          <div id="s-result" class="hidden"></div>
+        </div>
+      </div>
+
+      <!-- ─── LAUNCH GUIDES ─── -->
+      <div class="page" id="page-launch">
+        <div class="gen-header">
+          <h2>🚀 Step-by-Step Launch Guides</h2>
+          <p>Follow these guides to publish your campaigns directly into Google Ads and Meta Ads Manager.</p>
+        </div>
+        <div class="int-guide">
+          <div class="int-guide-tabs">
+            <button class="int-tab active" onclick="switchLaunchTab('google',this)">🎯 Google Ads</button>
+            <button class="int-tab" onclick="switchLaunchTab('meta',this)">📘 Meta Ads Manager</button>
+          </div>
+          <div class="int-guide-content">
+            <div id="launch-google">
+              <div style="background:var(--panel);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:20px;font-size:14px;color:var(--muted)">
+                ℹ️ <strong style="color:var(--bright)">Before you start:</strong> Make sure you have a Google account and your campaign generated in Zendara AI. You'll need your credit card for billing setup in Google Ads.
+              </div>
+              <div class="guide-step">
+                <div class="guide-step-num">1</div>
+                <div class="guide-step-body">
+                  <div class="guide-step-title">Go to Google Ads and create an account</div>
+                  <div class="guide-step-desc">Visit <strong>ads.google.com</strong> and click "Start now". Sign in with your Google account. When asked "What's your main advertising goal?" — select <strong>"Get more calls"</strong> or <strong>"Get more website sales or sign-ups"</strong>. Click "Switch to Expert Mode" at the bottom to access full campaign controls.</div>
+                  <span class="guide-step-link" onclick="openLink('https://ads.google.com')">↗ Open Google Ads</span>
+                </div>
+              </div>
+              <div class="guide-step">
+                <div class="guide-step-num">2</div>
+                <div class="guide-step-body">
+                  <div class="guide-step-title">Create a new Search campaign</div>
+                  <div class="guide-step-desc">Click <strong>"+ New campaign"</strong> → Select goal: <strong>"Leads"</strong> → Campaign type: <strong>"Search"</strong> → Click Continue. Enter your campaign name from Zendara (copy from the Campaign Overview section).</div>
+                </div>
+              </div>
+              <div class="guide-step">
+                <div class="guide-step-num">3</div>
+                <div class="guide-step-body">
+                  <div class="guide-step-title">Set bidding strategy and budget</div>
+                  <div class="guide-step-desc">Bidding: Select <strong>"Maximise conversions"</strong> (recommended for new campaigns) or the strategy Zendara specified. Budget: Enter the <strong>Daily Budget</strong> from Zendara's Campaign Overview. Set start date to today and no end date.</div>
+                </div>
+              </div>
+              <div class="guide-step">
+                <div class="guide-step-num">4</div>
+                <div class="guide-step-body">
+                  <div class="guide-step-title">Set location and language targeting</div>
+                  <div class="guide-step-desc">Location: Click <strong>"Enter another location"</strong> → Type your city (e.g. "Auckland") → Select it → Click <strong>"Nearby"</strong> to set radius. Language: Select <strong>English</strong>. Set location options to <strong>"Presence: People in or regularly in your targeted locations"</strong>.</div>
+                </div>
+              </div>
+              <div class="guide-step">
+                <div class="guide-step-num">5</div>
+                <div class="guide-step-body">
+                  <div class="guide-step-title">Create your Ad Group and add keywords</div>
+                  <div class="guide-step-desc">Name your ad group (use the Ad Group names from Zendara). In the keyword box, paste each keyword from Zendara's keyword list. Format: Exact Match uses [brackets], Phrase Match uses "quotes", Broad Match is plain text.</div>
+                </div>
+              </div>
+              <div class="guide-step">
+                <div class="guide-step-num">6</div>
+                <div class="guide-step-body">
+                  <div class="guide-step-title">Create your Responsive Search Ad</div>
+                  <div class="guide-step-desc">Click <strong>"+ New ad"</strong>. Enter your website URL. Copy and paste each headline from Zendara into the 15 headline fields — the character counter will confirm they fit. Paste all 4 descriptions. Click <strong>"Save and continue"</strong>.</div>
+                </div>
+              </div>
+              <div class="guide-step">
+                <div class="guide-step-num">7</div>
+                <div class="guide-step-body">
+                  <div class="guide-step-title">Add negative keywords</div>
+                  <div class="guide-step-desc">Go to <strong>Keywords → Negative keywords</strong>. Click <strong>"+"</strong> → Add to campaign level. Paste the negative keywords list from Zendara one per line. These prevent irrelevant clicks that waste your budget.</div>
+                </div>
+              </div>
+              <div class="guide-step">
+                <div class="guide-step-num">8</div>
+                <div class="guide-step-body">
+                  <div class="guide-step-title">Add ad extensions (assets)</div>
+                  <div class="guide-step-desc">Go to <strong>Ads & Assets → Assets</strong>. Add Sitelinks (4), Callouts (6), and Call extension from Zendara. These significantly improve click-through rate and are free to add.</div>
+                </div>
+              </div>
+              <div class="guide-step">
+                <div class="guide-step-num">9</div>
+                <div class="guide-step-body">
+                  <div class="guide-step-title">Publish and verify</div>
+                  <div class="guide-step-desc">Click <strong>"Publish campaign"</strong>. Google will review your ads (usually 1–3 hours, sometimes up to 24h for professional services). You'll get an email when approved. Check the <strong>Campaign Status</strong> shows "Eligible" ✓</div>
+                </div>
+              </div>
+              <div class="guide-cta">
+                <div style="font-size:14px;color:var(--muted)">📌 <strong style="color:var(--bright)">Need your campaign content?</strong> Generate it first in the Google Ads AI tab.</div>
+                <button class="btn btn-primary btn-sm" onclick="showPage('google',document.querySelector('[onclick*=\"google\"]'))">Generate Campaign →</button>
+              </div>
+            </div>
+            <div id="launch-meta" class="hidden">
+              <div style="background:var(--panel);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:20px;font-size:14px;color:var(--muted)">
+                ℹ️ <strong style="color:var(--bright)">Before you start:</strong> You need a Facebook Business Page and a Meta Business Suite account. Visit <strong onclick="openLink('https://business.facebook.com')" style="color:var(--blue);cursor:pointer">business.facebook.com</strong> to set this up (free, takes ~10 minutes).
+              </div>
+              <div class="guide-step">
+                <div class="guide-step-num blue">1</div>
+                <div class="guide-step-body">
+                  <div class="guide-step-title">Open Meta Ads Manager</div>
+                  <div class="guide-step-desc">Go to <strong>adsmanager.facebook.com</strong>. Click <strong>"+ Create"</strong>. Select your campaign objective — use <strong>"Leads"</strong> for professional services (this enables the native Lead Form).</div>
+                  <span class="guide-step-link" onclick="openLink('https://adsmanager.facebook.com')">↗ Open Meta Ads Manager</span>
+                </div>
+              </div>
+              <div class="guide-step">
+                <div class="guide-step-num blue">2</div>
+                <div class="guide-step-body">
+                  <div class="guide-step-title">Name your campaign and set budget</div>
+                  <div class="guide-step-desc">Use the Campaign Name from Zendara. Set <strong>Campaign Budget Optimisation (CBO)</strong> to ON. Enter the Monthly Budget from Zendara. Select <strong>Advantage+ placements</strong> for best results.</div>
+                </div>
+              </div>
+              <div class="guide-step">
+                <div class="guide-step-num blue">3</div>
+                <div class="guide-step-body">
+                  <div class="guide-step-title">Set up Ad Set 1 — Cold Audience</div>
+                  <div class="guide-step-desc">Name: Use Ad Set 1 name from Zendara. Location: Enter your city, set radius as specified. Age: Enter age range. Detailed Targeting: Click "Browse" and add each interest from Zendara's Detailed Targeting list. Set Exclusions from Zendara's excluded audiences list.</div>
+                </div>
+              </div>
+              <div class="guide-step">
+                <div class="guide-step-num blue">4</div>
+                <div class="guide-step-body">
+                  <div class="guide-step-title">Create your ads (3 variations)</div>
+                  <div class="guide-step-desc">For each ad variation from Zendara: Click <strong>"+ Add creative"</strong>. Upload or create your image (use the Image Brief for guidance — Canva is free). Paste Primary Text, Headline, Description. Select the CTA button. Repeat for all 3 variations.</div>
+                  <span class="guide-step-link" onclick="openLink('https://www.canva.com')">↗ Create your ad image in Canva (free)</span>
+                </div>
+              </div>
+              <div class="guide-step">
+                <div class="guide-step-num blue">5</div>
+                <div class="guide-step-body">
+                  <div class="guide-step-title">Set up the Lead Form</div>
+                  <div class="guide-step-desc">If using Lead Generation objective: Click <strong>"Create form"</strong>. Enter the Headline and Description from Zendara's Lead Form section. Add the 3 questions from Zendara. Enter the Thank You message. Click <strong>"Save"</strong>.</div>
+                </div>
+              </div>
+              <div class="guide-step">
+                <div class="guide-step-num blue">6</div>
+                <div class="guide-step-body">
+                  <div class="guide-step-title">Set up Ad Set 2 — Retargeting</div>
+                  <div class="guide-step-desc">Duplicate your first Ad Set. Rename it to "Retargeting". Change the audience to: Custom Audience → Website visitors (requires Facebook Pixel installed on your website). Use the Retargeting message angle from Zendara — adjust your ad copy for warm audiences.</div>
+                </div>
+              </div>
+              <div class="guide-step">
+                <div class="guide-step-num blue">7</div>
+                <div class="guide-step-body">
+                  <div class="guide-step-title">Install Facebook Pixel on your website</div>
+                  <div class="guide-step-desc">Go to <strong>Events Manager → Pixels → Add</strong>. Copy your Pixel ID. Install it on your website (via Google Tag Manager, WordPress plugin, or paste in site header). This enables retargeting and conversion tracking.</div>
+                  <span class="guide-step-link" onclick="openLink('https://business.facebook.com/events_manager')">↗ Open Events Manager</span>
+                </div>
+              </div>
+              <div class="guide-step">
+                <div class="guide-step-num blue">8</div>
+                <div class="guide-step-body">
+                  <div class="guide-step-title">Publish and monitor</div>
+                  <div class="guide-step-desc">Click <strong>"Publish"</strong>. Meta reviews ads for professional services within 24h. Check the Delivery column shows <strong>"Active"</strong>. In the first 3–5 days, don't make changes — let Meta's algorithm learn your audience.</div>
+                </div>
+              </div>
+              <div class="guide-cta">
+                <div style="font-size:14px;color:var(--muted)">📌 <strong style="color:var(--bright)">Need your Meta campaign content?</strong> Generate it first in the Meta Ads AI tab.</div>
+                <button class="btn btn-blue btn-sm" onclick="showPage('meta',document.querySelectorAll('[onclick*=\"meta\"]')[0])">Generate Campaign →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── SAVED CAMPAIGNS ─── -->
+      <div class="page" id="page-campaigns">
+        <div class="gen-header">
+          <h2>📁 Saved Campaigns</h2>
+          <p>All your saved campaigns stored locally. Generate and save from any generator page.</p>
+        </div>
+        <div id="camp-list-wrap"></div>
+      </div>
+
+      <!-- ─── SETTINGS ─── -->
+      <div class="page" id="page-settings">
+        <div class="gen-header"><h2>⚙️ Account Settings</h2><p>Manage your profile and preferences.</p></div>
+        <div class="settings-grid">
+          <div class="settings-card">
+            <h3>Business Profile</h3>
+            <p>This info pre-fills your generator forms.</p>
+            <div class="form-group"><label class="form-label">Display Name</label><input type="text" id="st-name" placeholder="Your name"/></div>
+            <div class="form-group"><label class="form-label">Business Name</label><input type="text" id="st-biz" placeholder="Your practice or firm"/></div>
+            <div class="form-group"><label class="form-label">Default City</label><input type="text" id="st-city" placeholder="Auckland"/></div>
+            <div class="form-group"><label class="form-label">Profession</label><input type="text" id="st-prof" placeholder="e.g. Family Law Attorney"/></div>
+            <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+          </div>
+          <div>
+            <div class="settings-card" style="margin-bottom:16px">
+              <h3>Current Plan</h3>
+              <p>You're on the <strong style="color:var(--bright)">Starter Plan</strong> — 14-day free trial active.</p>
+              <div style="background:var(--panel);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:16px">
+                <div style="font-size:13px;color:var(--muted);margin-bottom:8px">Trial includes:</div>
+                <div style="font-size:14px;color:var(--body);display:flex;flex-direction:column;gap:6px">
+                  <div>✓ AI Google Ads Generator</div>
+                  <div>✓ AI Meta Ads Generator</div>
+                  <div>✓ Campaign Quality Scoring</div>
+                  <div>✓ Step-by-step launch guides</div>
+                  <div style="color:var(--muted)">– 90-Day Strategy (Growth plan)</div>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-full" onclick="showToast('To upgrade email hello@zendara.ai — Growth $397/mo or Agency $797/mo','i')">Upgrade Plan →</button>
+            </div>
+            <div class="settings-card" style="border-color:rgba(239,68,68,.2)">
+              <h3 style="color:var(--red)">Sign Out</h3>
+              <p>You'll need to sign in again to access your campaigns.</p>
+              <button class="btn btn-danger" onclick="handleLogout()">Sign Out</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </div><!-- /main-area -->
+</div><!-- /app-layout -->
+</div><!-- /app -->
+
+<!-- TOAST -->
+<div class="toast" id="toast-el"></div>
+
+<style>
+.tab-btn{flex:1;padding:9px;text-align:center;border-radius:8px;font-size:14px;font-weight:500;color:var(--muted);cursor:pointer;border:none;background:none;transition:all .15s}
+.tab-btn.active{background:var(--border);color:var(--bright)}
+.int-tab{flex:1;padding:14px;text-align:center;font-size:14px;font-weight:500;color:var(--muted);cursor:pointer;border:none;background:none;transition:all .15s;border-bottom:2px solid transparent}
+.int-tab.active{color:var(--bright);border-bottom-color:var(--gold)}
+</style>
+
+<script>
+// ═══════════════════════════════════
+// STATE
+// ═══════════════════════════════════
+const S = {
+  user: null,
+  campaigns: JSON.parse(localStorage.getItem('zai_camps') || '[]'),
+  settings: JSON.parse(localStorage.getItem('zai_settings') || '{}'),
+  counts: { google: 0, meta: 0 },
+  scores: []
+};
+S.campaigns.forEach(c => {
+  S.counts[c.type]++;
+  if (c.score) S.scores.push(c.score);
+});
+
+// API endpoint — update this to your Vercel URL after deploy
+const API_URL = '/api/generate';
+
+// ═══════════════════════════════════
+// ROUTING
+// ═══════════════════════════════════
+function smoothScroll(sel) {
+  document.querySelector(sel)?.scrollIntoView({ behavior: 'smooth' });
+}
+function openLink(url) {
+  window.open(url, '_blank', 'noopener');
+}
+
+// ═══════════════════════════════════
+// AUTH
+// ═══════════════════════════════════
+function openAuth(mode) {
+  document.getElementById('auth-overlay').classList.remove('hidden');
+  switchAuth(mode);
+}
+function closeAuth() {
+  document.getElementById('auth-overlay').classList.add('hidden');
+}
+function switchAuth(mode) {
+  document.getElementById('form-login').classList.toggle('hidden', mode !== 'login');
+  document.getElementById('form-signup').classList.toggle('hidden', mode !== 'signup');
+}
+function handleLogin() {
+  const email = document.getElementById('l-email').value.trim();
+  const pass = document.getElementById('l-pass').value;
+  const err = document.getElementById('login-err');
+  if (!email || !pass) { showErr(err, 'Please enter email and password.'); return; }
+  const users = JSON.parse(localStorage.getItem('zai_users') || '[]');
+  const u = users.find(x => x.email === email && x.pass === pass);
+  if (!u) { showErr(err, 'Incorrect email or password.'); return; }
+  err.classList.add('hidden');
+  closeAuth();
+  bootApp(u);
+  showToast('Welcome back, ' + (u.fname || email) + '!', 's');
+}
+function handleSignup() {
+  const fname = document.getElementById('su-fname').value.trim();
+  const lname = document.getElementById('su-lname').value.trim();
+  const email = document.getElementById('su-email').value.trim();
+  const prof  = document.getElementById('su-profession').value;
+  const pass  = document.getElementById('su-pass').value;
+  const err = document.getElementById('su-err');
+  const ok  = document.getElementById('su-ok');
+  if (!fname || !email || !pass) { showErr(err, 'Please fill in all required fields.'); return; }
+  if (pass.length < 8) { showErr(err, 'Password must be at least 8 characters.'); return; }
+  if (!email.includes('@')) { showErr(err, 'Please enter a valid email address.'); return; }
+  const users = JSON.parse(localStorage.getItem('zai_users') || '[]');
+  if (users.find(x => x.email === email)) { showErr(err, 'Account already exists. Please sign in.'); return; }
+  const u = { fname, lname, email, pass, profession: prof, created: new Date().toISOString() };
+  users.push(u);
+  localStorage.setItem('zai_users', JSON.stringify(users));
+  err.classList.add('hidden');
+  ok.textContent = '✓ Account created! Signing you in...';
+  ok.classList.remove('hidden');
+  setTimeout(() => { closeAuth(); bootApp(u); showToast('Welcome to Zendara AI, ' + fname + '! 🎉', 's'); }, 900);
+}
+function handleLogout() {
+  S.user = null;
+  sessionStorage.removeItem('zai_session');
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('landing').style.display = 'block';
+  showToast('Signed out successfully.', 's');
+}
+function showErr(el, msg) {
+  el.textContent = '⚠ ' + msg;
+  el.classList.remove('hidden');
+}
+
+// ═══════════════════════════════════
+// APP BOOT
+// ═══════════════════════════════════
+function bootApp(u) {
+  S.user = u;
+  sessionStorage.setItem('zai_session', JSON.stringify(u));
+  document.getElementById('landing').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  const init = (u.fname || u.email || 'U')[0].toUpperCase();
+  document.getElementById('sb-av').textContent = init;
+  document.getElementById('sb-name').textContent = u.fname || u.email.split('@')[0];
+  document.getElementById('welcome-name').textContent = u.fname || 'there';
+  if (S.settings.name) document.getElementById('st-name').value = S.settings.name;
+  if (S.settings.biz)  document.getElementById('st-biz').value  = S.settings.biz;
+  if (S.settings.city) document.getElementById('st-city').value = S.settings.city;
+  if (S.settings.prof) document.getElementById('st-prof').value = S.settings.prof;
+  updateDashStats();
+  renderCampaigns();
+}
+
+// ═══════════════════════════════════
+// PAGE NAV
+// ═══════════════════════════════════
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const pg = document.getElementById('page-' + id);
+  if (pg) pg.classList.add('active');
+  if (btn) btn.classList.add('active');
+  const titles = {
+    dashboard:'Dashboard', google:'Google Ads AI', meta:'Meta Ads AI',
+    strategy:'90-Day Strategy', campaigns:'Saved Campaigns',
+    launch:'Launch Guides', settings:'Settings'
+  };
+  document.getElementById('page-title').textContent = titles[id] || id;
+}
+
+// ═══════════════════════════════════
+// META TABS
+// ═══════════════════════════════════
+function setMetaTab(t, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const labels = { fb: 'Facebook Ads', ig: 'Instagram Ads', both: 'Facebook + Instagram Ads' };
+  document.getElementById('m-plat').value = labels[t];
+}
+
+// ═══════════════════════════════════
+// LAUNCH GUIDE TABS
+// ═══════════════════════════════════
+function switchLaunchTab(tab, btn) {
+  document.querySelectorAll('.int-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('launch-google').classList.toggle('hidden', tab !== 'google');
+  document.getElementById('launch-meta').classList.toggle('hidden', tab !== 'meta');
+}
+
+// ═══════════════════════════════════
+// GOOGLE ADS GENERATOR
+// ═══════════════════════════════════
+async function runGoogleGen() {
+  const prof   = document.getElementById('g-prof').value;
+  const city   = document.getElementById('g-city').value.trim();
+  const budget = document.getElementById('g-budget').value;
+  const target = document.getElementById('g-target').value.trim();
+  const service= document.getElementById('g-service').value.trim();
+  const years  = document.getElementById('g-years').value;
+  const comp   = document.getElementById('g-comp').value.trim();
+  const usp    = document.getElementById('g-usp').value.trim();
+
+  if (!prof || !city || !budget) { showToast('Please fill in Profession, City, and Budget.', 'e'); return; }
+
+  const gout = document.getElementById('g-out');
+  const gload= document.getElementById('g-load');
+  const gres = document.getElementById('g-result');
+  gout.classList.remove('hidden');
+  gload.classList.remove('hidden');
+  gres.classList.add('hidden');
+  document.getElementById('g-btn').disabled = true;
+
+  const steps = [
+    'Analysing your profession and location...',
+    'Researching high-intent keywords for ' + city + '...',
+    'Writing headlines and descriptions...',
+    'Building negative keyword list...',
+    'Calculating budget forecast...',
+    'Scoring campaign quality...',
+    'Finalising campaign structure...'
+  ];
+  let si = 0;
+  const stI = setInterval(() => {
+    if (si < steps.length) document.getElementById('g-lstep').textContent = steps[si++];
+  }, 1600);
+
+  try {
+    const resp = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: 'google', data: { profession: prof, city, budget, target, service, years, usp, competitor: comp } })
+    });
+    clearInterval(stI);
+    const json = await resp.json();
+    if (!json.success) throw new Error(json.error || 'API error');
+    renderGoogleResult(json.data, prof, city, budget);
+    S.counts.google++;
+    updateDashStats();
+    markCheck('ck2');
+  } catch (e) {
+    clearInterval(stI);
+    gload.classList.add('hidden');
+    showToast('Generation failed: ' + e.message, 'e');
+  }
+  document.getElementById('g-btn').disabled = false;
+}
+
+function renderGoogleResult(d, prof, city, budget) {
+  document.getElementById('g-load').classList.add('hidden');
+  const el = document.getElementById('g-result');
+  el.classList.remove('hidden');
+
+  const scoreColor = d.quality_score >= 8 ? 'var(--green)' : d.quality_score >= 6 ? '#F59E0B' : 'var(--red)';
+  const scoreBg = `conic-gradient(${scoreColor} ${d.quality_score * 10}%, var(--border) 0)`;
+
+  let html = `
+  <div class="output-panel">
+    <div class="output-topbar">
+      <div class="output-title">✅ Google Ads Campaign Ready — ${prof}, ${city}</div>
+      <div class="output-actions">
+        <button class="btn btn-sm" style="background:var(--panel);color:var(--body);border:1px solid var(--border)" onclick="copyAllText('g-result')">📋 Copy All</button>
+        <button class="btn btn-primary btn-sm" onclick="savecamp('google','${prof}','${city}',${JSON.stringify(d).replace(/'/g,"&#39;")},${d.quality_score||0})">💾 Save Campaign</button>
+      </div>
+    </div>
+
+    <div class="score-header">
+      <div class="score-ring-wrap">
+        <div class="score-ring" style="background:${scoreBg}">${d.quality_score}</div>
+      </div>
+      <div class="score-info">
+        <h4>AI Quality Score: ${d.quality_score}/10</h4>
+        <div class="score-reasons">
+          ${(d.quality_reasons||[]).map(r=>`<div class="score-reason">${r}</div>`).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div class="out-section">
+      <div class="out-section-title">📋 Campaign Overview</div>
+      <div class="out-item">
+        <div class="out-item-body">
+          <strong>${d.campaign_name}</strong><br/>
+          <div class="out-item-meta">
+            <span class="meta-tag">${d.campaign_type}</span>
+            <span class="meta-tag">Daily: ${d.daily_budget_nzd}</span>
+            <span class="meta-tag">Monthly: ${d.monthly_budget_nzd}</span>
+            <span class="meta-tag">Bid: ${d.bidding_strategy}</span>
+          </div>
+          <div style="font-size:13px;color:var(--muted);margin-top:6px">${d.bidding_explanation||''}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Google Ad Preview -->
+    <div class="out-section">
+      <div class="out-section-title">👁 Live Ad Preview</div>
+      <div class="ad-preview-card">
+        <div class="ad-preview-header"><span class="ad-preview-icon">🔍</span><span class="ad-preview-label">Google Search Ad Preview</span></div>
+        <div class="ad-preview-body">
+          <div class="g-ad-url">Ad · ${city.toLowerCase().replace(/\s/g,'')}practicelaw.co.nz</div>
+          <div class="g-ad-title">${(d.headlines||[]).slice(0,3).map(h=>h.text).join(' | ')}</div>
+          <div class="g-ad-desc">${(d.descriptions||[{text:''}])[0].text}</div>
+          <div class="g-ad-ext">
+            ${(d.sitelinks||[]).slice(0,4).map(s=>`<span>📎 ${s.title}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="out-section">
+      <div class="out-section-title">🎯 Headlines — 15 Assets (max 30 chars each)</div>
+      ${(d.headlines||[]).map(h=>{
+        const pct = Math.min(100,(h.text.length/30)*100);
+        const cls = h.text.length>30?'over':h.text.length>25?'warn':'';
+        return `<div class="out-item">
+          <div class="out-item-body">
+            ${h.text}
+            <div class="out-item-meta"><span class="meta-tag ${h.type==='Brand'?'exact':h.type==='CTA'?'high':''}">${h.type||''}</span></div>
+            <div class="char-bar"><div class="char-track"><div class="char-fill ${cls}" style="width:${pct}%"></div></div><div class="char-text">${h.text.length}/30</div></div>
+          </div>
+          <button class="copy-btn" onclick="cp('${h.text.replace(/'/g,"\\'")}')">Copy</button>
+        </div>`;
+      }).join('')}
+    </div>
+
+    <div class="out-section">
+      <div class="out-section-title">📝 Descriptions — 4 Assets (max 90 chars each)</div>
+      ${(d.descriptions||[]).map(desc=>{
+        const pct = Math.min(100,(desc.text.length/90)*100);
+        const cls = desc.text.length>90?'over':desc.text.length>80?'warn':'';
+        return `<div class="out-item">
+          <div class="out-item-body">
+            ${desc.text}
+            <div class="char-bar"><div class="char-track"><div class="char-fill ${cls}" style="width:${pct}%"></div></div><div class="char-text">${desc.text.length}/90</div></div>
+          </div>
+          <button class="copy-btn" onclick="cp('${desc.text.replace(/'/g,"\\'")}')">Copy</button>
+        </div>`;
+      }).join('')}
+    </div>
+
+    <div class="out-section">
+      <div class="out-section-title">🔑 Keywords (${(d.keywords||[]).length} assets)</div>
+      ${(d.keywords||[]).map(k=>`<div class="out-item">
+        <div class="out-item-body">
+          <strong>${k.keyword}</strong>
+          <div class="out-item-meta">
+            <span class="meta-tag ${k.match_type==='Exact'?'exact':k.match_type==='Phrase'?'phrase':''}">${k.match_type} Match</span>
+            <span class="meta-tag ${k.intent==='High'?'high':k.intent==='Medium'?'med':'low'}">${k.intent} Intent</span>
+            <span class="meta-tag">Est. CPC: ${k.estimated_cpc_nzd||'TBC'}</span>
+            <span class="meta-tag">${k.ad_group||''}</span>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="cp('${k.keyword.replace(/'/g,"\\'")}')">Copy</button>
+      </div>`).join('')}
+    </div>
+
+    <div class="out-section">
+      <div class="out-section-title">🚫 Negative Keywords — Paste into Google Ads</div>
+      <div class="out-item">
+        <div class="out-item-body" style="color:var(--body)">${(d.negative_keywords||[]).join(', ')}</div>
+        <button class="copy-btn" onclick="cp('${(d.negative_keywords||[]).join('\\n')}')">Copy All</button>
+      </div>
+    </div>
+
+    <div class="out-section">
+      <div class="out-section-title">🔗 Sitelink Extensions</div>
+      ${(d.sitelinks||[]).map(s=>`<div class="out-item">
+        <div class="out-item-body">
+          <strong style="color:var(--bright)">${s.title}</strong><br/>
+          <span style="font-size:13px;color:var(--muted)">${s.desc1||s.description||''}</span><br/>
+          <span style="font-size:13px;color:var(--muted)">${s.desc2||''}</span>
+          <div class="out-item-meta"><span class="meta-tag">${s.url_path}</span></div>
+        </div>
+        <button class="copy-btn" onclick="cp('${s.title.replace(/'/g,"\\'")}')">Copy</button>
+      </div>`).join('')}
+    </div>
+
+    <div class="out-section">
+      <div class="out-section-title">💬 Callout Extensions</div>
+      <div class="out-item">
+        <div class="out-item-body">${(d.callouts||[]).join(' · ')}</div>
+        <button class="copy-btn" onclick="cp('${(d.callouts||[]).join(', ')}')">Copy All</button>
+      </div>
+    </div>
+
+    <div class="out-section">
+      <div class="out-section-title">📊 Budget & Lead Forecast</div>
+      <div class="out-item">
+        <div class="out-item-body">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center">
+            <div><div style="font-size:11px;color:var(--muted)">Est. Clicks/Mo</div><div style="font-size:20px;font-weight:700;color:var(--bright);font-family:'Sora',sans-serif">${(d.budget_breakdown||{}).estimated_clicks_monthly||'TBC'}</div></div>
+            <div><div style="font-size:11px;color:var(--muted)">Est. CPL (NZD)</div><div style="font-size:20px;font-weight:700;color:var(--green);font-family:'Sora',sans-serif">${(d.budget_breakdown||{}).estimated_cpl_nzd||'TBC'}</div></div>
+            <div><div style="font-size:11px;color:var(--muted)">Est. Leads/Mo</div><div style="font-size:20px;font-weight:700;color:var(--bright);font-family:'Sora',sans-serif">${(d.budget_breakdown||{}).estimated_leads_monthly||'TBC'}</div></div>
+            <div><div style="font-size:11px;color:var(--muted)">Est. ROAS</div><div style="font-size:20px;font-weight:700;color:var(--gold);font-family:'Sora',sans-serif">${(d.budget_breakdown||{}).estimated_roas||'TBC'}</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="out-section">
+      <div class="out-section-title">✅ Google Ads Launch Checklist</div>
+      ${(d.launch_checklist||[]).map((s,i)=>`<div class="out-item"><div class="out-item-body"><strong style="color:var(--gold)">Step ${i+1}:</strong> ${s}</div></div>`).join('')}
+    </div>
+
+    <div class="out-section">
+      <div class="out-section-title">💡 AI Optimisation Tips</div>
+      ${(d.tips||[]).map(t=>`<div class="out-item"><div class="out-item-body">→ ${t}</div></div>`).join('')}
+    </div>
+
+    <div style="background:var(--panel);border:1px solid rgba(201,168,76,.2);border-radius:var(--r);padding:16px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <div style="font-size:14px;color:var(--muted)">🚀 <strong style="color:var(--bright)">Ready to go live?</strong> Follow the step-by-step launch guide.</div>
+      <button class="btn btn-primary btn-sm" onclick="showPage('launch',document.querySelector('[onclick*=launch]'))">Open Launch Guide →</button>
+    </div>
+  </div>`;
+
+  el.innerHTML = html;
+  showToast('Google Ads campaign generated! Score: ' + d.quality_score + '/10', 's');
+  window._lastG = { type: 'google', profession: prof, city, budget, data: d, score: d.quality_score, created: new Date().toISOString() };
+}
+
+// ═══════════════════════════════════
+// META GENERATOR
+// ═══════════════════════════════════
+async function runMetaGen() {
+  const prof   = document.getElementById('m-prof').value;
+  const city   = document.getElementById('m-city').value.trim();
+  const plat   = document.getElementById('m-plat').value;
+  const obj    = document.getElementById('m-obj').value;
+  const budget = document.getElementById('m-budget').value;
+  const age    = document.getElementById('m-age').value;
+  const offer  = document.getElementById('m-offer').value.trim();
+  const prob   = document.getElementById('m-prob').value.trim();
+
+  if (!prof || !city) { showToast('Please fill in Profession and City.', 'e'); return; }
+
+  const mout = document.getElementById('m-out');
+  const mload= document.getElementById('m-load');
+  const mres = document.getElementById('m-result');
+  mout.classList.remove('hidden');
+  mload.classList.remove('hidden');
+  mres.classList.add('hidden');
+  document.getElementById('m-btn').disabled = true;
+
+  const steps = ['Analysing audience demographics...','Building targeting strategy...','Writing ad copy variations...','Crafting creative briefs...','Generating lead form...','Scoring campaign quality...'];
+  let si = 0;
+  const stI = setInterval(() => {
+    if (si < steps.length) document.getElementById('m-lstep').textContent = steps[si++];
+  }, 1700);
+
+  try {
+    const resp = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: 'meta', data: { profession: prof, city, platform: plat, objective: obj, budget, age, offer, problem: prob } })
+    });
+    clearInterval(stI);
+    const json = await resp.json();
+    if (!json.success) throw new Error(json.error || 'API error');
+    renderMetaResult(json.data, prof, city, plat);
+    S.counts.meta++;
+    updateDashStats();
+    markCheck('ck3');
+  } catch (e) {
+    clearInterval(stI);
+    mload.classList.add('hidden');
+    showToast('Generation failed: ' + e.message, 'e');
+  }
+  document.getElementById('m-btn').disabled = false;
+}
+
+function renderMetaResult(d, prof, city, plat) {
+  document.getElementById('m-load').classList.add('hidden');
+  const el = document.getElementById('m-result');
+  el.classList.remove('hidden');
+
+  const scoreColor = d.quality_score >= 8 ? 'var(--green)' : d.quality_score >= 6 ? '#F59E0B' : 'var(--red)';
+  const scoreBg = `conic-gradient(${scoreColor} ${d.quality_score*10}%, var(--border) 0)`;
+
+  let html = `
+  <div class="output-panel">
+    <div class="output-topbar">
+      <div class="output-title">✅ ${plat} Campaign Ready — ${prof}, ${city}</div>
+      <div class="output-actions">
+        <button class="btn btn-sm" style="background:var(--panel);color:var(--body);border:1px solid var(--border)" onclick="copyAllText('m-result')">📋 Copy All</button>
+        <button class="btn btn-blue btn-sm" onclick="savecamp('meta','${prof}','${city}',${JSON.stringify(d).replace(/'/g,"&#39;")},${d.quality_score||0})">💾 Save Campaign</button>
+      </div>
+    </div>
+
+    <div class="score-header">
+      <div class="score-ring-wrap">
+        <div class="score-ring" style="background:${scoreBg}">${d.quality_score}</div>
+      </div>
+      <div class="score-info">
+        <h4>AI Quality Score: ${d.quality_score}/10</h4>
+        <div class="score-reasons">
+          ${(d.quality_reasons||[]).map(r=>`<div class="score-reason">${r}</div>`).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div class="out-section">
+      <div class="out-section-title">📋 Campaign Overview</div>
+      <div class="out-item">
+        <div class="out-item-body">
+          <strong>${d.campaign_name}</strong><br/>
+          <div class="out-item-meta">
+            <span class="meta-tag">${d.objective}</span>
+            <span class="meta-tag">Daily: ${d.daily_budget_nzd}</span>
+            <span class="meta-tag">${d.budget_recommendation}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="out-section">
+      <div class="out-section-title">🎯 Audience Targeting — Ad Set 1 (Cold Traffic)</div>
+      <div class="out-item">
+        <div class="out-item-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:14px">
+            <div><strong style="color:var(--bright)">Age:</strong> ${(d.audience||{}).age_range}</div>
+            <div><strong style="color:var(--bright)">Gender:</strong> ${(d.audience||{}).gender}</div>
+            <div><strong style="color:var(--bright)">Location:</strong> ${(d.audience||{}).locations} (${(d.audience||{}).radius_km}km radius)</div>
+            <div><strong style="color:var(--bright)">Lookalike:</strong> ${(d.audience||{}).lookalike_percentage}</div>
+          </div>
+          <div style="margin-top:12px">
+            <div style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:6px">DETAILED TARGETING INTERESTS</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">${(d.audience?.detailed_targeting||[]).map(i=>`<span class="meta-tag">${i}</span>`).join('')}</div>
+          </div>
+          <div style="margin-top:10px">
+            <div style="font-size:12px;color:var(--red);font-weight:600;margin-bottom:6px">EXCLUDE AUDIENCES</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">${(d.audience?.excluded_audiences||[]).map(i=>`<span class="meta-tag low">${i}</span>`).join('')}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="out-section">
+      <div class="out-section-title">📢 Ad Creatives — 3 Variations</div>
+      ${(d.ads||[]).map((ad,i)=>`
+      <div class="ad-preview-card">
+        <div class="ad-preview-header">
+          <span class="ad-preview-icon">${plat.includes('Instagram')?'📸':'📘'}</span>
+          <span class="ad-preview-label">Ad ${i+1}: ${ad.ad_name} — ${ad.format} · ${ad.copy_angle} Angle</span>
+        </div>
+        <div class="ad-preview-body">
+          <div class="fb-ad-wrap">
+            <div class="fb-ad-header">
+              <div class="fb-ad-av"></div>
+              <div><div class="fb-ad-name">${prof}</div><div class="fb-ad-sponsored">Sponsored · ${(d.placements||['Feed'])[0]}</div></div>
+            </div>
+            <div class="fb-ad-text">${ad.primary_text}</div>
+            <div class="fb-ad-img">📸 ${ad.image_brief}</div>
+            <div class="fb-ad-cta">
+              <div><div class="fb-ad-hl">${ad.headline}</div><div style="font-size:12px;color:var(--muted)">${ad.description}</div></div>
+              <button class="fb-ad-btn">${ad.cta_button}</button>
+            </div>
+          </div>
+          <div style="margin-top:14px;background:var(--panel);border-radius:var(--r);padding:14px">
+            <div style="font-size:11px;color:var(--gold);font-weight:600;margin-bottom:8px">COPY ASSETS — PASTE INTO META ADS MANAGER</div>
+            <div class="out-item" style="margin-bottom:8px">
+              <div class="out-item-body"><strong>Hook:</strong> ${ad.hook}</div>
+              <button class="copy-btn" onclick="cp('${(ad.hook||'').replace(/'/g,"\\'")}')">Copy</button>
+            </div>
+            <div class="out-item" style="margin-bottom:8px">
+              <div class="out-item-body"><strong>Primary Text:</strong> ${ad.primary_text}
+              <div class="char-bar"><div class="char-track"><div class="char-fill ${ad.primary_text.length>125?'warn':''}" style="width:${Math.min(100,(ad.primary_text.length/125)*100)}%"></div></div><div class="char-text">${ad.primary_text.length}/125</div></div>
+              </div>
+              <button class="copy-btn" onclick="cp('${(ad.primary_text||'').replace(/'/g,"\\'")}')">Copy</button>
+            </div>
+            <div class="out-item" style="margin-bottom:8px">
+              <div class="out-item-body"><strong>Headline:</strong> ${ad.headline}
+              <div class="char-bar"><div class="char-track"><div class="char-fill ${ad.headline.length>40?'over':''}" style="width:${Math.min(100,(ad.headline.length/40)*100)}%"></div></div><div class="char-text">${ad.headline.length}/40</div></div>
+              </div>
+              <button class="copy-btn" onclick="cp('${(ad.headline||'').replace(/'/g,"\\'")}')">Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>`).join('')}
+    </div>
+
+    <div class="out-section">
+      <div class="out-section-title">📋 Lead Form Setup</div>
+      <div class="out-item">
+        <div class="out-item-body">
+          <strong>${(d.lead_form||{}).headline}</strong><br/>
+          <span style="font-size:13px;color:var(--muted)">${(d.lead_form||{}).description}</span>
+          <div style="margin-top:10px">
+            <div style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:6px">QUESTIONS TO ADD</div>
+            ${(d.lead_form?.questions||[]).map((q,i)=>`<div style="font-size:14px;color:var(--body);margin-bottom:4px">${i+1}. ${q}</div>`).join('')}
+          </div>
+          <div style="margin-top:10px;font-size:13px;color:var(--muted)"><strong style="color:var(--bright)">Thank You Message:</strong> ${(d.lead_form||{}).thank_you_message}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="out-section">
+      <div class="out-section-title">🔁 Retargeting Strategy</div>
+      <div class="out-item">
+        <div class="out-item-body">
+          <strong>Audience:</strong> ${(d.retargeting||{}).audience_definition}<br/>
+          <strong>Window:</strong> ${(d.retargeting||{}).window_days} days<br/>
+          <strong>Message Shift:</strong> ${(d.retargeting||{}).message_shift}<br/>
+          <div class="out-item-meta"><span class="meta-tag">Budget: ${(d.retargeting||{}).budget_percent}% of total</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="out-section">
+      <div class="out-section-title">⚠️ Compliance Notes</div>
+      ${(d.compliance_notes||[]).map(n=>`<div class="out-item"><div class="out-item-body">→ ${n}</div></div>`).join('')}
+    </div>
+
+    <div class="out-section">
+      <div class="out-section-title">✅ Meta Ads Manager Launch Steps</div>
+      ${(d.meta_ads_manager_steps||[]).map((s,i)=>`<div class="out-item"><div class="out-item-body"><strong style="color:var(--blue)">Step ${i+1}:</strong> ${s}</div></div>`).join('')}
+    </div>
+
+    <div class="out-section">
+      <div class="out-section-title">💡 AI Optimisation Tips</div>
+      ${(d.tips||[]).map(t=>`<div class="out-item"><div class="out-item-body">→ ${t}</div></div>`).join('')}
+    </div>
+
+    <div style="background:var(--panel);border:1px solid rgba(59,130,246,.2);border-radius:var(--r);padding:16px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <div style="font-size:14px;color:var(--muted)">🚀 <strong style="color:var(--bright)">Ready to publish?</strong> Follow the Meta Ads launch guide.</div>
+      <button class="btn btn-blue btn-sm" onclick="showPage('launch',document.querySelector('[onclick*=launch]'));switchLaunchTab('meta',document.querySelectorAll('.int-tab')[1])">Open Meta Guide →</button>
+    </div>
+  </div>`;
+
+  el.innerHTML = html;
+  showToast('Meta campaign generated! Score: ' + d.quality_score + '/10 🎯', 's');
+  window._lastM = { type: 'meta', profession: prof, city, platform: plat, data: d, score: d.quality_score, created: new Date().toISOString() };
+}
+
+// ═══════════════════════════════════
+// STRATEGY GENERATOR
+// ═══════════════════════════════════
+async function runStrategyGen() {
+  const prof   = document.getElementById('s-prof').value.trim();
+  const city   = document.getElementById('s-city').value.trim();
+  const budget = document.getElementById('s-budget').value;
+  const goals  = document.getElementById('s-goals').value.trim();
+
+  if (!prof || !city || !budget) { showToast('Please fill in Profession, City, and Budget.', 'e'); return; }
+
+  const sout = document.getElementById('s-out');
+  const sload= document.getElementById('s-load');
+  const sres = document.getElementById('s-result');
+  sout.classList.remove('hidden');
+  sload.classList.remove('hidden');
+  sres.classList.add('hidden');
+  document.getElementById('s-btn').disabled = true;
+
+  try {
+    const resp = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: 'strategy', data: { profession: prof, city, budget, goals } })
+    });
+    const json = await resp.json();
+    if (!json.success) throw new Error(json.error || 'API error');
+    renderStrategyResult(json.data, prof, city, budget);
+  } catch (e) {
+    sload.classList.add('hidden');
+    showToast('Generation failed: ' + e.message, 'e');
+  }
+  document.getElementById('s-btn').disabled = false;
+}
+
+function renderStrategyResult(d, prof, city, budget) {
+  document.getElementById('s-load').classList.add('hidden');
+  const el = document.getElementById('s-result');
+  el.classList.remove('hidden');
+
+  const months = [
+    { key: 'month_1', label: 'Month 1', cls: '', numCls: '' },
+    { key: 'month_2', label: 'Month 2', cls: 'm2', numCls: 'm2' },
+    { key: 'month_3', label: 'Month 3', cls: 'm3', numCls: 'm3' }
+  ];
+
+  let html = `
+  <div class="output-panel">
+    <div class="output-topbar">
+      <div class="output-title">🗺 90-Day Strategy — ${prof}, ${city}</div>
+      <div class="output-actions">
+        <button class="btn btn-primary btn-sm" onclick="showPage('google',document.querySelector('[onclick*=google]'))">Generate Google Ads →</button>
+      </div>
+    </div>
+
+    <div class="strategy-card" style="background:linear-gradient(135deg,rgba(201,168,76,.08),var(--card))">
+      <div style="font-size:13px;color:var(--gold);font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">Executive Summary</div>
+      <p style="font-size:15px;color:var(--body);line-height:1.7">${d.executive_summary}</p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px;text-align:center">
+        <div><div style="font-size:11px;color:var(--muted)">Target CPL</div><div style="font-size:22px;font-weight:700;color:var(--green);font-family:'Sora',sans-serif">${(d.success_metrics||{}).target_cpl_nzd||'TBC'}</div></div>
+        <div><div style="font-size:11px;color:var(--muted)">Leads/Month</div><div style="font-size:22px;font-weight:700;color:var(--bright);font-family:'Sora',sans-serif">${(d.success_metrics||{}).target_leads_monthly||'TBC'}</div></div>
+        <div><div style="font-size:11px;color:var(--muted)">Target ROAS</div><div style="font-size:22px;font-weight:700;color:var(--gold);font-family:'Sora',sans-serif">${(d.success_metrics||{}).target_roas||'TBC'}</div></div>
+        <div><div style="font-size:11px;color:var(--muted)">Break Even</div><div style="font-size:22px;font-weight:700;color:var(--bright);font-family:'Sora',sans-serif">${(d.success_metrics||{}).break_even_point||'TBC'}</div></div>
+      </div>
+    </div>
+
+    <div class="strategy-card">
+      <div style="font-size:13px;color:var(--gold);font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-bottom:16px">Budget Allocation</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div style="background:var(--panel);border-radius:var(--r);padding:16px;text-align:center">
+          <div style="font-size:12px;color:var(--muted);margin-bottom:6px">🎯 Google Ads</div>
+          <div style="font-size:28px;font-weight:800;color:var(--bright);font-family:'Sora',sans-serif">$${(d.budget_split||{}).google_ads_nzd||0}<span style="font-size:14px;color:var(--muted)">/mo</span></div>
+          <div style="font-size:13px;color:var(--gold)">${(d.budget_split||{}).google_ads_percent||0}% of budget</div>
+        </div>
+        <div style="background:var(--panel);border-radius:var(--r);padding:16px;text-align:center">
+          <div style="font-size:12px;color:var(--muted);margin-bottom:6px">📘 Meta Ads</div>
+          <div style="font-size:28px;font-weight:800;color:var(--bright);font-family:'Sora',sans-serif">$${(d.budget_split||{}).meta_ads_nzd||0}<span style="font-size:14px;color:var(--muted)">/mo</span></div>
+          <div style="font-size:13px;color:var(--blue)">${(d.budget_split||{}).meta_ads_percent||0}% of budget</div>
+        </div>
+      </div>
+      <div style="margin-top:12px;font-size:14px;color:var(--muted)">${(d.budget_split||{}).rationale||''}</div>
+    </div>
+
+    ${months.map(m=>{
+      const mo = d[m.key] || {};
+      return `<div class="strategy-card">
+        <div class="strategy-month">
+          <div class="month-num ${m.cls}">${m.label.split(' ')[1]}</div>
+          <div>
+            <div style="font-size:16px;font-weight:600;color:var(--bright)">${m.label}: ${mo.theme||''}</div>
+            <div style="font-size:13px;color:var(--muted)">Google: ${mo.google_focus||''} · Meta: ${mo.meta_focus||''}</div>
+          </div>
+        </div>
+        <div style="margin-bottom:12px">
+          <div style="font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Tasks</div>
+          ${(mo.tasks||[]).map(t=>`<div style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:var(--body);margin-bottom:6px"><span style="color:var(--green);flex-shrink:0">→</span>${t}</div>`).join('')}
+        </div>
+        <div class="kpi-list">${(mo.kpis||[]).map(k=>`<span class="kpi-tag">📊 ${k}</span>`).join('')}</div>
+      </div>`;
+    }).join('')}
+
+    <div class="strategy-card">
+      <div style="font-size:13px;color:var(--green);font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px">⚡ Quick Wins (Start This Week)</div>
+      ${(d.quick_wins||[]).map(w=>`<div style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:var(--body);margin-bottom:8px;background:var(--green3);border-radius:8px;padding:10px 12px"><span style="color:var(--green)">✓</span>${w}</div>`).join('')}
+    </div>
+  </div>`;
+
+  el.innerHTML = html;
+  showToast('90-day strategy built! 🗺', 's');
+}
+
+// ═══════════════════════════════════
+// SAVE / LOAD CAMPAIGNS
+// ═══════════════════════════════════
+function savecamp(type, prof, city, data, score) {
+  const camp = { type, profession: prof, city, data, score, created: new Date().toISOString() };
+  S.campaigns.unshift(camp);
+  S.scores.push(score);
+  localStorage.setItem('zai_camps', JSON.stringify(S.campaigns));
+  updateDashStats();
+  renderCampaigns();
+  showToast('Campaign saved! ✓', 's');
+}
+
+function renderCampaigns() {
+  const el = document.getElementById('camp-list-wrap');
+  if (!S.campaigns.length) {
+    el.innerHTML = '<div style="text-align:center;padding:64px 20px;color:var(--muted)"><div style="font-size:40px;margin-bottom:16px">📁</div><div style="font-size:16px;margin-bottom:8px;color:var(--bright)">No saved campaigns yet</div><div style="font-size:14px">Generate and save from the Google Ads or Meta Ads pages.</div></div>';
+    return;
+  }
+  el.innerHTML = '<div class="camp-list">' + S.campaigns.map((c,i)=>`
+    <div class="camp-card">
+      <div>
+        <div class="camp-name">${(c.data||{}).campaign_name || c.profession + ' Campaign'}</div>
+        <div class="camp-meta">${c.profession} · ${c.city} · ${new Date(c.created).toLocaleDateString('en-NZ')}</div>
+      </div>
+      <div class="camp-badges">
+        <span class="cbadge ${c.type==='google'?'cbadge-g':'cbadge-m'}">${c.type==='google'?'🎯 Google Ads':'📘 Meta Ads'}</span>
+        ${c.score?`<span class="cbadge cbadge-ok">Score: ${c.score}/10</span>`:''}
+      </div>
+      <div class="camp-actions">
+        <button class="btn btn-sm btn-danger" onclick="delCamp(${i})">Delete</button>
+      </div>
+    </div>`).join('') + '</div>';
+}
+
+function delCamp(i) {
+  S.campaigns.splice(i,1);
+  localStorage.setItem('zai_camps', JSON.stringify(S.campaigns));
+  renderCampaigns();
+  showToast('Campaign deleted.','s');
+}
+
+function updateDashStats() {
+  let gc=0, mc=0;
+  S.campaigns.forEach(c=>{ if(c.type==='google') gc++; else mc++; });
+  document.getElementById('ds-total').textContent = S.campaigns.length;
+  document.getElementById('ds-google').textContent = gc;
+  document.getElementById('ds-meta').textContent = mc;
+  const allScores = S.campaigns.filter(c=>c.score).map(c=>c.score);
+  document.getElementById('ds-score').textContent = allScores.length ? (allScores.reduce((a,b)=>a+b,0)/allScores.length).toFixed(1) : '—';
+}
+
+// ═══════════════════════════════════
+// SETTINGS
+// ═══════════════════════════════════
+function saveSettings() {
+  S.settings.name = document.getElementById('st-name').value;
+  S.settings.biz  = document.getElementById('st-biz').value;
+  S.settings.city = document.getElementById('st-city').value;
+  S.settings.prof = document.getElementById('st-prof').value;
+  localStorage.setItem('zai_settings', JSON.stringify(S.settings));
+  showToast('Settings saved ✓','s');
+}
+
+// ═══════════════════════════════════
+// CHECKLIST
+// ═══════════════════════════════════
+function markCheck(id) {
+  const c = document.getElementById(id+'c');
+  const t = document.getElementById(id+'t');
+  if (c) { c.classList.add('done'); c.textContent='✓'; }
+  if (t) { t.classList.add('done'); }
+}
+
+// ═══════════════════════════════════
+// FAQ
+// ═══════════════════════════════════
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  item.classList.toggle('open');
+}
+
+// ═══════════════════════════════════
+// COPY UTILS
+// ═══════════════════════════════════
+function cp(text) {
+  navigator.clipboard.writeText(text).then(()=>showToast('Copied ✓','s'));
+}
+function copyAllText(containerId) {
+  const texts = [];
+  document.querySelectorAll('#'+containerId+' .out-item-body').forEach(el=>texts.push(el.innerText));
+  navigator.clipboard.writeText(texts.join('\n\n')).then(()=>showToast('Full campaign copied! ✓','s'));
+}
+
+// ═══════════════════════════════════
+// TOAST
+// ═══════════════════════════════════
+let _toast;
+function showToast(msg, type='s') {
+  const el = document.getElementById('toast-el');
+  const icons = { s:'✓', e:'⚠', i:'ℹ' };
+  el.innerHTML = `<span style="color:${type==='s'?'var(--green)':type==='e'?'var(--red)':'var(--blue)';}">${icons[type]}</span> ${msg}`;
+  el.className = 'toast show toast-'+type;
+  clearTimeout(_toast);
+  _toast = setTimeout(()=>el.classList.remove('show'), 3800);
+}
+
+// ═══════════════════════════════════
+// INIT
+// ═══════════════════════════════════
+const saved = sessionStorage.getItem('zai_session');
+if (saved) {
+  try { bootApp(JSON.parse(saved)); } catch(e) {}
+}
+</script>
+</body>
+</html>
